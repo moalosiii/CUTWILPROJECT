@@ -12,7 +12,8 @@ namespace Events.Data
         public Comment()
         {
             this.Date = DateTime.Now;
-        }
+        }//
+
 
         public int Id { get; set; }
 
