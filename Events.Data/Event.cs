@@ -17,7 +17,7 @@ namespace Events.Data
             this.StartDateTime = DateTime.Now;
         }
 
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string objectId { get; set;}
 

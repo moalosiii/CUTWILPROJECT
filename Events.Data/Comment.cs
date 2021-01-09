@@ -14,8 +14,7 @@ namespace Events.Data
             this.Date = DateTime.Now;
         }//
 
-
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         [Required]
         public string Text { get; set; }
@@ -27,7 +26,7 @@ namespace Events.Data
 
         public virtual ApplicationUser Author { get; set; }
 
-        public int EventId { get; set; }
+        public string EventId { get; set; }
 
         [Required]
         public virtual Event Event { get; set; }

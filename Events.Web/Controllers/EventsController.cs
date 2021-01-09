@@ -58,9 +58,9 @@ namespace Events.Web.Controllers
                 eventObj["name"] = model.Title;
                 eventObj["description"] = model.Description;
                 eventObj["startTime"] = model.StartDateTime;
-
                 //save to backendless
                 saveEventObj = Backendless.Data.Of("Event").Save(eventObj);
+
 
                 var e = new Event()
                 {
@@ -71,6 +71,8 @@ namespace Events.Web.Controllers
                     Description = model.Description,
                     Location = model.Location,
                     IsPublic = model.IsPublic,
+                    Id = saveEventObj["objectId"].ToString()
+                    
 
                 };
 
@@ -86,7 +88,7 @@ namespace Events.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
             var eventToEdit = this.LoadEvent(id);
             if (eventToEdit == null)
@@ -100,7 +102,7 @@ namespace Events.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, EventInputModel model)
+        public ActionResult Edit(string id, EventInputModel model)
         {
             var eventToEdit = this.LoadEvent(id);
             if (eventToEdit == null)
@@ -127,7 +129,7 @@ namespace Events.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
             var eventToDelete = this.LoadEvent(id);
             if (eventToDelete == null)
@@ -142,7 +144,7 @@ namespace Events.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, EventInputModel model)
+        public ActionResult Delete(string id, EventInputModel model)
         {
             var eventToDelete = this.LoadEvent(id);
             if (eventToDelete == null)
@@ -158,7 +160,7 @@ namespace Events.Web.Controllers
         }
 
 
-        private Event LoadEvent(int id)
+        private Event LoadEvent(string id)
         {
             var currentUserId = this.User.Identity.GetUserId();
             var isAdmin = this.IsAdmin();

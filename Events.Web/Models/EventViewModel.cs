@@ -9,7 +9,7 @@ namespace Events.Web.Models
 {
     public class EventViewModel
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public string Title { get; set; }
 

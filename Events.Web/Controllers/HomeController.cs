@@ -26,7 +26,7 @@ namespace Events.Web.Controllers
             });
         }
 
-        public ActionResult EventDetailsById(int id)
+        public ActionResult EventDetailsById(string id)
         {
             var currentUserId = this.User.Identity.GetUserId();
             var isAdmin = this.IsAdmin();

@@ -78,12 +78,14 @@ namespace Events.Data.Migrations
         {
             context.Events.Add(new Event()
             {
+                Id = "",
                 Title = "Party @ SoftUni",
                 StartDateTime = DateTime.Now.Date.AddDays(5).AddHours(21).AddMinutes(30)
             });
 
             context.Events.Add(new Event()
             {
+                Id = "",
                 Title = "Party <Again>",
                 StartDateTime = DateTime.Now.Date.AddDays(7).AddHours(23).AddMinutes(00),
                 Comments = new HashSet<Comment>() {
@@ -93,12 +95,14 @@ namespace Events.Data.Migrations
 
             context.Events.Add(new Event()
             {
+                Id = "",
                 Title = "World Economic Forum <Later>",
                 StartDateTime = DateTime.Now.Date.AddDays(8).AddHours(22).AddMinutes(15)
             });
 
             context.Events.Add(new Event()
             {
+                Id = "",
                 Title = "Birthday Party",
                 StartDateTime = DateTime.Now.Date.AddDays(-2).AddHours(10).AddMinutes(30),
                 Duration = TimeSpan.FromHours(1.5),
@@ -110,6 +114,7 @@ namespace Events.Data.Migrations
 
             context.Events.Add(new Event()
             {
+                Id = "",
                 Title = "Passed Event <Again>",
                 StartDateTime = DateTime.Now.Date.AddDays(-10).AddHours(18).AddMinutes(00),
                 Duration = TimeSpan.FromHours(3),
@@ -117,6 +122,7 @@ namespace Events.Data.Migrations
 
             context.Events.Add(new Event()
             {
+                Id = "",
                 Title = "Passed Event",
                 StartDateTime = DateTime.Now.Date.AddDays(-2).AddHours(12).AddMinutes(0),
                 Author = context.Users.First(),
@@ -127,6 +133,7 @@ namespace Events.Data.Migrations
 
             context.Events.Add(new Event()
             {
+                Id = "",
                 Title = "ASP.NET MVC Lab",
                 StartDateTime = DateTime.Now.Date.AddDays(3).AddHours(11).AddMinutes(30),
                 Author = context.Users.First(),
@@ -139,7 +146,6 @@ namespace Events.Data.Migrations
                     new Comment() { Text = "new comment", Author = context.Users.First() }
                 }
             });
-
             context.SaveChanges();
         }
     }
