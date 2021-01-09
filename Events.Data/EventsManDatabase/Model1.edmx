@@ -1,0 +1,1797 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="newEventManSQLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="streetNumber1" Type="varchar" MaxLength="100" />
+          <Property Name="streetNumber2" Type="varchar" MaxLength="100" />
+          <Property Name="streetNumber3" Type="varchar" MaxLength="100" />
+          <Property Name="city" Type="varchar" MaxLength="100" />
+          <Property Name="state" Type="varchar" MaxLength="50" />
+          <Property Name="country" Type="varchar" MaxLength="50" />
+          <Property Name="postalCode" Type="varchar" MaxLength="16" />
+          <Property Name="preferredAddress" Type="char" MaxLength="2" />
+          <Property Name="AddressTypeid" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Allergies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="60" />
+          <Property Name="Participantid" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="emailAddress" Type="varchar" MaxLength="25" />
+          <Property Name="altEmail" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
+          <Property Name="startTime" Type="datetime" />
+          <Property Name="endTime" Type="datetime" />
+          <Property Name="Gpslocationid" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="EventTypeid" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="Addressid" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="Adminid" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="EventProgramid" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="EventCatergoryid" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventCatergory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="EventProgram">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="description" Type="int" />
+          <Property Name="timedate" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'newEventManSQL.dbo.eventSpeaker' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="eventSpeaker">
+          <Key>
+            <PropertyRef Name="Speakersid" />
+            <PropertyRef Name="Eventid" />
+          </Key>
+          <Property Name="Speakersid" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="Eventid" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'newEventManSQL.dbo.EventSponsor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EventSponsor">
+          <Key>
+            <PropertyRef Name="Sponsorid" />
+            <PropertyRef Name="Eventid" />
+          </Key>
+          <Property Name="Sponsorid" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="Eventid" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="rating" Type="int" />
+          <Property Name="comment" Type="varchar" MaxLength="1500" />
+          <Property Name="ParticipantEventid" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gpslocation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="latitude" Type="varchar" MaxLength="60" />
+          <Property Name="longitude" Type="varchar" MaxLength="60" />
+        </EntityType>
+        <EntityType Name="MenuCatergory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MenuItem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="MenuCatergoryid" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="itemName" Type="varchar" MaxLength="50" />
+          <Property Name="itemDesc" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Newsletter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="updates" Type="varchar" MaxLength="1000" />
+          <Property Name="Participantid" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="NewsletterTypeid" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsletterType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="catergoryName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="message" Type="varchar" MaxLength="1500" />
+          <Property Name="ParticipantEventid" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Participant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="ParticipantTypeid" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ParticipantEvent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="attend" Type="char" MaxLength="2" />
+          <Property Name="Eventid" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="Participantid" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="PreferredFoodid" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ParticipantType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PhoneNumber">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="phone" Type="varchar" MaxLength="15" />
+          <Property Name="altPhone" Type="varchar" MaxLength="15" />
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PreferredFood">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="MenuItemid" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PrivateInvites">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="ParticipantEventid" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="surname" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="15" />
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="Emailid" Type="char" MaxLength="45" />
+          <Property Name="PhoneNumberid" Type="char" MaxLength="45" />
+          <Property Name="Addressid" Type="char" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Speakers">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+          <Property Name="topic" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Sponsor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="char" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FKAddress553385">
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="AddressTypeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKAllergies644926">
+          <End Role="Participant" Type="Self.Participant" Multiplicity="1" />
+          <End Role="Allergies" Type="Self.Allergies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Allergies">
+              <PropertyRef Name="Participantid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEvent152552">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="Addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEvent170926">
+          <End Role="Gpslocation" Type="Self.Gpslocation" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gpslocation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="Gpslocationid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEvent30760">
+          <End Role="EventType" Type="Self.EventType" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="EventTypeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEvent334644">
+          <End Role="EventProgram" Type="Self.EventProgram" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventProgram">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="EventProgramid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEvent472093">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="Adminid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEvent996150">
+          <End Role="EventCatergory" Type="Self.EventCatergory" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventCatergory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="EventCatergoryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKeventSpeak330297">
+          <End Role="Speakers" Type="Self.Speakers" Multiplicity="1" />
+          <End Role="eventSpeaker" Type="Self.eventSpeaker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Speakers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="eventSpeaker">
+              <PropertyRef Name="Speakersid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKeventSpeak773177">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="eventSpeaker" Type="Self.eventSpeaker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="eventSpeaker">
+              <PropertyRef Name="Eventid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEventSpons662827">
+          <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="1" />
+          <End Role="EventSponsor" Type="Self.EventSponsor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sponsor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EventSponsor">
+              <PropertyRef Name="Sponsorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEventSpons822224">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="EventSponsor" Type="Self.EventSponsor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="EventSponsor">
+              <PropertyRef Name="Eventid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKFeedback857750">
+          <End Role="ParticipantEvent" Type="Self.ParticipantEvent" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipantEvent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="ParticipantEventid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKMenuItem218851">
+          <End Role="MenuCatergory" Type="Self.MenuCatergory" Multiplicity="1" />
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuCatergory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MenuItem">
+              <PropertyRef Name="MenuCatergoryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKNewsletter106370">
+          <End Role="NewsletterType" Type="Self.NewsletterType" Multiplicity="1" />
+          <End Role="Newsletter" Type="Self.Newsletter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsletterType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Newsletter">
+              <PropertyRef Name="NewsletterTypeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKNewsletter752462">
+          <End Role="Participant" Type="Self.Participant" Multiplicity="1" />
+          <End Role="Newsletter" Type="Self.Newsletter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Newsletter">
+              <PropertyRef Name="Participantid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKNotificati446266">
+          <End Role="ParticipantEvent" Type="Self.ParticipantEvent" Multiplicity="1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipantEvent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="ParticipantEventid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKParticipan261897">
+          <End Role="Participant" Type="Self.Participant" Multiplicity="1" />
+          <End Role="ParticipantEvent" Type="Self.ParticipantEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ParticipantEvent">
+              <PropertyRef Name="Participantid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKParticipan794185">
+          <End Role="PreferredFood" Type="Self.PreferredFood" Multiplicity="1" />
+          <End Role="ParticipantEvent" Type="Self.ParticipantEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferredFood">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ParticipantEvent">
+              <PropertyRef Name="PreferredFoodid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKParticipan860186">
+          <End Role="ParticipantType" Type="Self.ParticipantType" Multiplicity="1" />
+          <End Role="Participant" Type="Self.Participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipantType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Participant">
+              <PropertyRef Name="ParticipantTypeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKParticipan920909">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="ParticipantEvent" Type="Self.ParticipantEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ParticipantEvent">
+              <PropertyRef Name="Eventid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPreferredF132570">
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="1" />
+          <End Role="PreferredFood" Type="Self.PreferredFood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PreferredFood">
+              <PropertyRef Name="MenuItemid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPrivateInv659836">
+          <End Role="ParticipantEvent" Type="Self.ParticipantEvent" Multiplicity="1" />
+          <End Role="PrivateInvites" Type="Self.PrivateInvites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipantEvent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PrivateInvites">
+              <PropertyRef Name="ParticipantEventid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfile351736">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfile430748">
+          <End Role="PhoneNumber" Type="Self.PhoneNumber" Multiplicity="0..1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhoneNumber">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="PhoneNumberid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfile442662">
+          <End Role="Participant" Type="Self.Participant" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Participant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfile737390">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="Addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfile785431">
+          <End Role="Speakers" Type="Self.Speakers" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Speakers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfile937823">
+          <End Role="Email" Type="Self.Email" Multiplicity="0..1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="Emailid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfile996277">
+          <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Sponsor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="newEventManSQLModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AddressType" EntityType="Self.AddressType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Allergies" EntityType="Self.Allergies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Email" EntityType="Self.Email" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventCatergory" EntityType="Self.EventCatergory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventProgram" EntityType="Self.EventProgram" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventType" EntityType="Self.EventType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Feedback" EntityType="Self.Feedback" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gpslocation" EntityType="Self.Gpslocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuCatergory" EntityType="Self.MenuCatergory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MenuItem" EntityType="Self.MenuItem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Newsletter" EntityType="Self.Newsletter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsletterType" EntityType="Self.NewsletterType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Participant" EntityType="Self.Participant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParticipantEvent" EntityType="Self.ParticipantEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParticipantType" EntityType="Self.ParticipantType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhoneNumber" EntityType="Self.PhoneNumber" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PreferredFood" EntityType="Self.PreferredFood" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PrivateInvites" EntityType="Self.PrivateInvites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Speakers" EntityType="Self.Speakers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sponsor" EntityType="Self.Sponsor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="eventSpeaker" EntityType="Self.eventSpeaker" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [eventSpeaker].[Speakersid] AS [Speakersid], 
+    [eventSpeaker].[Eventid] AS [Eventid]
+    FROM [dbo].[eventSpeaker] AS [eventSpeaker]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="EventSponsor" EntityType="Self.EventSponsor" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EventSponsor].[Sponsorid] AS [Sponsorid], 
+    [EventSponsor].[Eventid] AS [Eventid]
+    FROM [dbo].[EventSponsor] AS [EventSponsor]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FKAddress553385" Association="Self.FKAddress553385">
+            <End Role="AddressType" EntitySet="AddressType" />
+            <End Role="Address" EntitySet="Address" />
+          </AssociationSet>
+          <AssociationSet Name="FKAllergies644926" Association="Self.FKAllergies644926">
+            <End Role="Participant" EntitySet="Participant" />
+            <End Role="Allergies" EntitySet="Allergies" />
+          </AssociationSet>
+          <AssociationSet Name="FKEvent152552" Association="Self.FKEvent152552">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FKEvent170926" Association="Self.FKEvent170926">
+            <End Role="Gpslocation" EntitySet="Gpslocation" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FKEvent30760" Association="Self.FKEvent30760">
+            <End Role="EventType" EntitySet="EventType" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FKEvent334644" Association="Self.FKEvent334644">
+            <End Role="EventProgram" EntitySet="EventProgram" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FKEvent472093" Association="Self.FKEvent472093">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FKEvent996150" Association="Self.FKEvent996150">
+            <End Role="EventCatergory" EntitySet="EventCatergory" />
+            <End Role="Event" EntitySet="Event" />
+          </AssociationSet>
+          <AssociationSet Name="FKeventSpeak330297" Association="Self.FKeventSpeak330297">
+            <End Role="Speakers" EntitySet="Speakers" />
+            <End Role="eventSpeaker" EntitySet="eventSpeaker" />
+          </AssociationSet>
+          <AssociationSet Name="FKeventSpeak773177" Association="Self.FKeventSpeak773177">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="eventSpeaker" EntitySet="eventSpeaker" />
+          </AssociationSet>
+          <AssociationSet Name="FKEventSpons662827" Association="Self.FKEventSpons662827">
+            <End Role="Sponsor" EntitySet="Sponsor" />
+            <End Role="EventSponsor" EntitySet="EventSponsor" />
+          </AssociationSet>
+          <AssociationSet Name="FKEventSpons822224" Association="Self.FKEventSpons822224">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="EventSponsor" EntitySet="EventSponsor" />
+          </AssociationSet>
+          <AssociationSet Name="FKFeedback857750" Association="Self.FKFeedback857750">
+            <End Role="ParticipantEvent" EntitySet="ParticipantEvent" />
+            <End Role="Feedback" EntitySet="Feedback" />
+          </AssociationSet>
+          <AssociationSet Name="FKMenuItem218851" Association="Self.FKMenuItem218851">
+            <End Role="MenuCatergory" EntitySet="MenuCatergory" />
+            <End Role="MenuItem" EntitySet="MenuItem" />
+          </AssociationSet>
+          <AssociationSet Name="FKNewsletter106370" Association="Self.FKNewsletter106370">
+            <End Role="NewsletterType" EntitySet="NewsletterType" />
+            <End Role="Newsletter" EntitySet="Newsletter" />
+          </AssociationSet>
+          <AssociationSet Name="FKNewsletter752462" Association="Self.FKNewsletter752462">
+            <End Role="Participant" EntitySet="Participant" />
+            <End Role="Newsletter" EntitySet="Newsletter" />
+          </AssociationSet>
+          <AssociationSet Name="FKNotificati446266" Association="Self.FKNotificati446266">
+            <End Role="ParticipantEvent" EntitySet="ParticipantEvent" />
+            <End Role="Notification" EntitySet="Notification" />
+          </AssociationSet>
+          <AssociationSet Name="FKParticipan261897" Association="Self.FKParticipan261897">
+            <End Role="Participant" EntitySet="Participant" />
+            <End Role="ParticipantEvent" EntitySet="ParticipantEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FKParticipan794185" Association="Self.FKParticipan794185">
+            <End Role="PreferredFood" EntitySet="PreferredFood" />
+            <End Role="ParticipantEvent" EntitySet="ParticipantEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FKParticipan860186" Association="Self.FKParticipan860186">
+            <End Role="ParticipantType" EntitySet="ParticipantType" />
+            <End Role="Participant" EntitySet="Participant" />
+          </AssociationSet>
+          <AssociationSet Name="FKParticipan920909" Association="Self.FKParticipan920909">
+            <End Role="Event" EntitySet="Event" />
+            <End Role="ParticipantEvent" EntitySet="ParticipantEvent" />
+          </AssociationSet>
+          <AssociationSet Name="FKPreferredF132570" Association="Self.FKPreferredF132570">
+            <End Role="MenuItem" EntitySet="MenuItem" />
+            <End Role="PreferredFood" EntitySet="PreferredFood" />
+          </AssociationSet>
+          <AssociationSet Name="FKPrivateInv659836" Association="Self.FKPrivateInv659836">
+            <End Role="ParticipantEvent" EntitySet="ParticipantEvent" />
+            <End Role="PrivateInvites" EntitySet="PrivateInvites" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfile351736" Association="Self.FKProfile351736">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfile430748" Association="Self.FKProfile430748">
+            <End Role="PhoneNumber" EntitySet="PhoneNumber" />
+            <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfile442662" Association="Self.FKProfile442662">
+            <End Role="Participant" EntitySet="Participant" />
+            <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfile737390" Association="Self.FKProfile737390">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfile785431" Association="Self.FKProfile785431">
+            <End Role="Speakers" EntitySet="Speakers" />
+            <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfile937823" Association="Self.FKProfile937823">
+            <End Role="Email" EntitySet="Email" />
+            <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfile996277" Association="Self.FKProfile996277">
+            <End Role="Sponsor" EntitySet="Sponsor" />
+            <End Role="Profile" EntitySet="Profile" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="newEventManSQLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="streetNumber1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="streetNumber2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="streetNumber3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="postalCode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="preferredAddress" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="AddressTypeid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AddressType" Relationship="Self.FKAddress553385" FromRole="Address" ToRole="AddressType" />
+          <NavigationProperty Name="Events" Relationship="Self.FKEvent152552" FromRole="Address" ToRole="Event" />
+          <NavigationProperty Name="Profiles" Relationship="Self.FKProfile737390" FromRole="Address" ToRole="Profile" />
+        </EntityType>
+        <EntityType Name="AddressType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Addresses" Relationship="Self.FKAddress553385" FromRole="AddressType" ToRole="Address" />
+        </EntityType>
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Events" Relationship="Self.FKEvent472093" FromRole="Admin" ToRole="Event" />
+          <NavigationProperty Name="Profile" Relationship="Self.FKProfile351736" FromRole="Admin" ToRole="Profile" />
+        </EntityType>
+        <EntityType Name="Allergy">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="Participantid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Participant" Relationship="Self.FKAllergies644926" FromRole="Allergies" ToRole="Participant" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="emailAddress" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="altEmail" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Profiles" Relationship="Self.FKProfile937823" FromRole="Email" ToRole="Profile" />
+        </EntityType>
+        <EntityType Name="Event">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="startTime" Type="DateTime" Precision="3" />
+          <Property Name="endTime" Type="DateTime" Precision="3" />
+          <Property Name="Gpslocationid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EventTypeid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Addressid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Adminid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EventProgramid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="EventCatergoryid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FKEvent152552" FromRole="Event" ToRole="Address" />
+          <NavigationProperty Name="Admin" Relationship="Self.FKEvent472093" FromRole="Event" ToRole="Admin" />
+          <NavigationProperty Name="Gpslocation" Relationship="Self.FKEvent170926" FromRole="Event" ToRole="Gpslocation" />
+          <NavigationProperty Name="EventType" Relationship="Self.FKEvent30760" FromRole="Event" ToRole="EventType" />
+          <NavigationProperty Name="EventProgram" Relationship="Self.FKEvent334644" FromRole="Event" ToRole="EventProgram" />
+          <NavigationProperty Name="EventCatergory" Relationship="Self.FKEvent996150" FromRole="Event" ToRole="EventCatergory" />
+          <NavigationProperty Name="ParticipantEvents" Relationship="Self.FKParticipan920909" FromRole="Event" ToRole="ParticipantEvent" />
+          <NavigationProperty Name="Speakers" Relationship="Self.eventSpeaker" FromRole="Event" ToRole="Speakers" />
+          <NavigationProperty Name="Sponsors" Relationship="Self.EventSponsor" FromRole="Event" ToRole="Sponsor" />
+        </EntityType>
+        <EntityType Name="EventCatergory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Events" Relationship="Self.FKEvent996150" FromRole="EventCatergory" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="EventProgram">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="Int32" />
+          <Property Name="timedate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Events" Relationship="Self.FKEvent334644" FromRole="EventProgram" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="EventType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Events" Relationship="Self.FKEvent30760" FromRole="EventType" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Feedback">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="rating" Type="Int32" />
+          <Property Name="comment" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+          <Property Name="ParticipantEventid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ParticipantEvent" Relationship="Self.FKFeedback857750" FromRole="Feedback" ToRole="ParticipantEvent" />
+        </EntityType>
+        <EntityType Name="Gpslocation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="latitude" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="longitude" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Events" Relationship="Self.FKEvent170926" FromRole="Gpslocation" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="MenuCatergory">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="MenuItems" Relationship="Self.FKMenuItem218851" FromRole="MenuCatergory" ToRole="MenuItem" />
+        </EntityType>
+        <EntityType Name="MenuItem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MenuCatergoryid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="itemName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="itemDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MenuCatergory" Relationship="Self.FKMenuItem218851" FromRole="MenuItem" ToRole="MenuCatergory" />
+          <NavigationProperty Name="PreferredFoods" Relationship="Self.FKPreferredF132570" FromRole="MenuItem" ToRole="PreferredFood" />
+        </EntityType>
+        <EntityType Name="Newsletter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="updates" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Participantid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NewsletterTypeid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="NewsletterType" Relationship="Self.FKNewsletter106370" FromRole="Newsletter" ToRole="NewsletterType" />
+          <NavigationProperty Name="Participant" Relationship="Self.FKNewsletter752462" FromRole="Newsletter" ToRole="Participant" />
+        </EntityType>
+        <EntityType Name="NewsletterType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="catergoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Newsletters" Relationship="Self.FKNewsletter106370" FromRole="NewsletterType" ToRole="Newsletter" />
+        </EntityType>
+        <EntityType Name="Notification">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="message" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
+          <Property Name="ParticipantEventid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ParticipantEvent" Relationship="Self.FKNotificati446266" FromRole="Notification" ToRole="ParticipantEvent" />
+        </EntityType>
+        <EntityType Name="Participant">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ParticipantTypeid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Allergies" Relationship="Self.FKAllergies644926" FromRole="Participant" ToRole="Allergies" />
+          <NavigationProperty Name="Newsletters" Relationship="Self.FKNewsletter752462" FromRole="Participant" ToRole="Newsletter" />
+          <NavigationProperty Name="ParticipantEvents" Relationship="Self.FKParticipan261897" FromRole="Participant" ToRole="ParticipantEvent" />
+          <NavigationProperty Name="ParticipantType" Relationship="Self.FKParticipan860186" FromRole="Participant" ToRole="ParticipantType" />
+          <NavigationProperty Name="Profile" Relationship="Self.FKProfile442662" FromRole="Participant" ToRole="Profile" />
+        </EntityType>
+        <EntityType Name="ParticipantEvent">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="attend" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="Eventid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Participantid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="PreferredFoodid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Event" Relationship="Self.FKParticipan920909" FromRole="ParticipantEvent" ToRole="Event" />
+          <NavigationProperty Name="Feedbacks" Relationship="Self.FKFeedback857750" FromRole="ParticipantEvent" ToRole="Feedback" />
+          <NavigationProperty Name="Notifications" Relationship="Self.FKNotificati446266" FromRole="ParticipantEvent" ToRole="Notification" />
+          <NavigationProperty Name="Participant" Relationship="Self.FKParticipan261897" FromRole="ParticipantEvent" ToRole="Participant" />
+          <NavigationProperty Name="PreferredFood" Relationship="Self.FKParticipan794185" FromRole="ParticipantEvent" ToRole="PreferredFood" />
+          <NavigationProperty Name="PrivateInvites" Relationship="Self.FKPrivateInv659836" FromRole="ParticipantEvent" ToRole="PrivateInvites" />
+        </EntityType>
+        <EntityType Name="ParticipantType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Participants" Relationship="Self.FKParticipan860186" FromRole="ParticipantType" ToRole="Participant" />
+        </EntityType>
+        <EntityType Name="PhoneNumber">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="altPhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Profiles" Relationship="Self.FKProfile430748" FromRole="PhoneNumber" ToRole="Profile" />
+        </EntityType>
+        <EntityType Name="PreferredFood">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MenuItemid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="MenuItem" Relationship="Self.FKPreferredF132570" FromRole="PreferredFood" ToRole="MenuItem" />
+          <NavigationProperty Name="ParticipantEvents" Relationship="Self.FKParticipan794185" FromRole="PreferredFood" ToRole="ParticipantEvent" />
+        </EntityType>
+        <EntityType Name="PrivateInvite">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="ParticipantEventid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ParticipantEvent" Relationship="Self.FKPrivateInv659836" FromRole="PrivateInvites" ToRole="ParticipantEvent" />
+        </EntityType>
+        <EntityType Name="Profile">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Emailid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" />
+          <Property Name="PhoneNumberid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" />
+          <Property Name="Addressid" Type="String" MaxLength="45" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Address" Relationship="Self.FKProfile737390" FromRole="Profile" ToRole="Address" />
+          <NavigationProperty Name="Admin" Relationship="Self.FKProfile351736" FromRole="Profile" ToRole="Admin" />
+          <NavigationProperty Name="Email" Relationship="Self.FKProfile937823" FromRole="Profile" ToRole="Email" />
+          <NavigationProperty Name="Participant" Relationship="Self.FKProfile442662" FromRole="Profile" ToRole="Participant" />
+          <NavigationProperty Name="PhoneNumber" Relationship="Self.FKProfile430748" FromRole="Profile" ToRole="PhoneNumber" />
+          <NavigationProperty Name="Speaker" Relationship="Self.FKProfile785431" FromRole="Profile" ToRole="Speakers" />
+          <NavigationProperty Name="Sponsor" Relationship="Self.FKProfile996277" FromRole="Profile" ToRole="Sponsor" />
+        </EntityType>
+        <EntityType Name="Speaker">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="topic" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Profile" Relationship="Self.FKProfile785431" FromRole="Speakers" ToRole="Profile" />
+          <NavigationProperty Name="Events" Relationship="Self.eventSpeaker" FromRole="Speakers" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="Sponsor">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" MaxLength="45" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Profile" Relationship="Self.FKProfile996277" FromRole="Sponsor" ToRole="Profile" />
+          <NavigationProperty Name="Events" Relationship="Self.EventSponsor" FromRole="Sponsor" ToRole="Event" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FKAddress553385">
+          <End Role="AddressType" Type="Self.AddressType" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AddressType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="AddressTypeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEvent152552">
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="Addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfile737390">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="Addressid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEvent472093">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="Adminid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfile351736">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKAllergies644926">
+          <End Role="Participant" Type="Self.Participant" Multiplicity="1" />
+          <End Role="Allergies" Type="Self.Allergy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Allergies">
+              <PropertyRef Name="Participantid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfile937823">
+          <End Role="Email" Type="Self.Email" Multiplicity="0..1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="Emailid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEvent170926">
+          <End Role="Gpslocation" Type="Self.Gpslocation" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gpslocation">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="Gpslocationid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEvent30760">
+          <End Role="EventType" Type="Self.EventType" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="EventTypeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEvent334644">
+          <End Role="EventProgram" Type="Self.EventProgram" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventProgram">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="EventProgramid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKEvent996150">
+          <End Role="EventCatergory" Type="Self.EventCatergory" Multiplicity="1" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventCatergory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Event">
+              <PropertyRef Name="EventCatergoryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKParticipan920909">
+          <End Role="Event" Type="Self.Event" Multiplicity="1" />
+          <End Role="ParticipantEvent" Type="Self.ParticipantEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Event">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ParticipantEvent">
+              <PropertyRef Name="Eventid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKFeedback857750">
+          <End Role="ParticipantEvent" Type="Self.ParticipantEvent" Multiplicity="1" />
+          <End Role="Feedback" Type="Self.Feedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipantEvent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Feedback">
+              <PropertyRef Name="ParticipantEventid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKMenuItem218851">
+          <End Role="MenuCatergory" Type="Self.MenuCatergory" Multiplicity="1" />
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuCatergory">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="MenuItem">
+              <PropertyRef Name="MenuCatergoryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPreferredF132570">
+          <End Role="MenuItem" Type="Self.MenuItem" Multiplicity="1" />
+          <End Role="PreferredFood" Type="Self.PreferredFood" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MenuItem">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PreferredFood">
+              <PropertyRef Name="MenuItemid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKNewsletter106370">
+          <End Role="NewsletterType" Type="Self.NewsletterType" Multiplicity="1" />
+          <End Role="Newsletter" Type="Self.Newsletter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NewsletterType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Newsletter">
+              <PropertyRef Name="NewsletterTypeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKNewsletter752462">
+          <End Role="Participant" Type="Self.Participant" Multiplicity="1" />
+          <End Role="Newsletter" Type="Self.Newsletter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Newsletter">
+              <PropertyRef Name="Participantid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKNotificati446266">
+          <End Role="ParticipantEvent" Type="Self.ParticipantEvent" Multiplicity="1" />
+          <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipantEvent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Notification">
+              <PropertyRef Name="ParticipantEventid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKParticipan261897">
+          <End Role="Participant" Type="Self.Participant" Multiplicity="1" />
+          <End Role="ParticipantEvent" Type="Self.ParticipantEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ParticipantEvent">
+              <PropertyRef Name="Participantid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKParticipan860186">
+          <End Role="ParticipantType" Type="Self.ParticipantType" Multiplicity="1" />
+          <End Role="Participant" Type="Self.Participant" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipantType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Participant">
+              <PropertyRef Name="ParticipantTypeid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfile442662">
+          <End Role="Participant" Type="Self.Participant" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Participant">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKParticipan794185">
+          <End Role="PreferredFood" Type="Self.PreferredFood" Multiplicity="1" />
+          <End Role="ParticipantEvent" Type="Self.ParticipantEvent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PreferredFood">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ParticipantEvent">
+              <PropertyRef Name="PreferredFoodid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKPrivateInv659836">
+          <End Role="ParticipantEvent" Type="Self.ParticipantEvent" Multiplicity="1" />
+          <End Role="PrivateInvites" Type="Self.PrivateInvite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipantEvent">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PrivateInvites">
+              <PropertyRef Name="ParticipantEventid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfile430748">
+          <End Role="PhoneNumber" Type="Self.PhoneNumber" Multiplicity="0..1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhoneNumber">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="PhoneNumberid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfile785431">
+          <End Role="Speakers" Type="Self.Speaker" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Speakers">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FKProfile996277">
+          <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="1" />
+          <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Sponsor">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Profile">
+              <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="eventSpeaker">
+          <End Role="Speakers" Type="Self.Speaker" Multiplicity="*" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+        </Association>
+        <Association Name="EventSponsor">
+          <End Role="Sponsor" Type="Self.Sponsor" Multiplicity="*" />
+          <End Role="Event" Type="Self.Event" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="newEventManSQLEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="AddressTypes" EntityType="Self.AddressType" />
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Allergies" EntityType="Self.Allergy" />
+          <EntitySet Name="Emails" EntityType="Self.Email" />
+          <EntitySet Name="Events" EntityType="Self.Event" />
+          <EntitySet Name="EventCatergories" EntityType="Self.EventCatergory" />
+          <EntitySet Name="EventPrograms" EntityType="Self.EventProgram" />
+          <EntitySet Name="EventTypes" EntityType="Self.EventType" />
+          <EntitySet Name="Feedbacks" EntityType="Self.Feedback" />
+          <EntitySet Name="Gpslocations" EntityType="Self.Gpslocation" />
+          <EntitySet Name="MenuCatergories" EntityType="Self.MenuCatergory" />
+          <EntitySet Name="MenuItems" EntityType="Self.MenuItem" />
+          <EntitySet Name="Newsletters" EntityType="Self.Newsletter" />
+          <EntitySet Name="NewsletterTypes" EntityType="Self.NewsletterType" />
+          <EntitySet Name="Notifications" EntityType="Self.Notification" />
+          <EntitySet Name="Participants" EntityType="Self.Participant" />
+          <EntitySet Name="ParticipantEvents" EntityType="Self.ParticipantEvent" />
+          <EntitySet Name="ParticipantTypes" EntityType="Self.ParticipantType" />
+          <EntitySet Name="PhoneNumbers" EntityType="Self.PhoneNumber" />
+          <EntitySet Name="PreferredFoods" EntityType="Self.PreferredFood" />
+          <EntitySet Name="PrivateInvites" EntityType="Self.PrivateInvite" />
+          <EntitySet Name="Profiles" EntityType="Self.Profile" />
+          <EntitySet Name="Speakers" EntityType="Self.Speaker" />
+          <EntitySet Name="Sponsors" EntityType="Self.Sponsor" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FKAddress553385" Association="Self.FKAddress553385">
+            <End Role="AddressType" EntitySet="AddressTypes" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FKEvent152552" Association="Self.FKEvent152552">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfile737390" Association="Self.FKProfile737390">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FKEvent472093" Association="Self.FKEvent472093">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfile351736" Association="Self.FKProfile351736">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FKAllergies644926" Association="Self.FKAllergies644926">
+            <End Role="Participant" EntitySet="Participants" />
+            <End Role="Allergies" EntitySet="Allergies" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfile937823" Association="Self.FKProfile937823">
+            <End Role="Email" EntitySet="Emails" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FKEvent170926" Association="Self.FKEvent170926">
+            <End Role="Gpslocation" EntitySet="Gpslocations" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FKEvent30760" Association="Self.FKEvent30760">
+            <End Role="EventType" EntitySet="EventTypes" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FKEvent334644" Association="Self.FKEvent334644">
+            <End Role="EventProgram" EntitySet="EventPrograms" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FKEvent996150" Association="Self.FKEvent996150">
+            <End Role="EventCatergory" EntitySet="EventCatergories" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="FKParticipan920909" Association="Self.FKParticipan920909">
+            <End Role="Event" EntitySet="Events" />
+            <End Role="ParticipantEvent" EntitySet="ParticipantEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FKFeedback857750" Association="Self.FKFeedback857750">
+            <End Role="ParticipantEvent" EntitySet="ParticipantEvents" />
+            <End Role="Feedback" EntitySet="Feedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FKMenuItem218851" Association="Self.FKMenuItem218851">
+            <End Role="MenuCatergory" EntitySet="MenuCatergories" />
+            <End Role="MenuItem" EntitySet="MenuItems" />
+          </AssociationSet>
+          <AssociationSet Name="FKPreferredF132570" Association="Self.FKPreferredF132570">
+            <End Role="MenuItem" EntitySet="MenuItems" />
+            <End Role="PreferredFood" EntitySet="PreferredFoods" />
+          </AssociationSet>
+          <AssociationSet Name="FKNewsletter106370" Association="Self.FKNewsletter106370">
+            <End Role="NewsletterType" EntitySet="NewsletterTypes" />
+            <End Role="Newsletter" EntitySet="Newsletters" />
+          </AssociationSet>
+          <AssociationSet Name="FKNewsletter752462" Association="Self.FKNewsletter752462">
+            <End Role="Participant" EntitySet="Participants" />
+            <End Role="Newsletter" EntitySet="Newsletters" />
+          </AssociationSet>
+          <AssociationSet Name="FKNotificati446266" Association="Self.FKNotificati446266">
+            <End Role="ParticipantEvent" EntitySet="ParticipantEvents" />
+            <End Role="Notification" EntitySet="Notifications" />
+          </AssociationSet>
+          <AssociationSet Name="FKParticipan261897" Association="Self.FKParticipan261897">
+            <End Role="Participant" EntitySet="Participants" />
+            <End Role="ParticipantEvent" EntitySet="ParticipantEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FKParticipan860186" Association="Self.FKParticipan860186">
+            <End Role="ParticipantType" EntitySet="ParticipantTypes" />
+            <End Role="Participant" EntitySet="Participants" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfile442662" Association="Self.FKProfile442662">
+            <End Role="Participant" EntitySet="Participants" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FKParticipan794185" Association="Self.FKParticipan794185">
+            <End Role="PreferredFood" EntitySet="PreferredFoods" />
+            <End Role="ParticipantEvent" EntitySet="ParticipantEvents" />
+          </AssociationSet>
+          <AssociationSet Name="FKPrivateInv659836" Association="Self.FKPrivateInv659836">
+            <End Role="ParticipantEvent" EntitySet="ParticipantEvents" />
+            <End Role="PrivateInvites" EntitySet="PrivateInvites" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfile430748" Association="Self.FKProfile430748">
+            <End Role="PhoneNumber" EntitySet="PhoneNumbers" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfile785431" Association="Self.FKProfile785431">
+            <End Role="Speakers" EntitySet="Speakers" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="FKProfile996277" Association="Self.FKProfile996277">
+            <End Role="Sponsor" EntitySet="Sponsors" />
+            <End Role="Profile" EntitySet="Profiles" />
+          </AssociationSet>
+          <AssociationSet Name="eventSpeaker" Association="Self.eventSpeaker">
+            <End Role="Speakers" EntitySet="Speakers" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+          <AssociationSet Name="EventSponsor" Association="Self.EventSponsor">
+            <End Role="Sponsor" EntitySet="Sponsors" />
+            <End Role="Event" EntitySet="Events" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="newEventManSQLModelStoreContainer" CdmEntityContainer="newEventManSQLEntities">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="newEventManSQLModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="streetNumber1" ColumnName="streetNumber1" />
+                <ScalarProperty Name="streetNumber2" ColumnName="streetNumber2" />
+                <ScalarProperty Name="streetNumber3" ColumnName="streetNumber3" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="state" ColumnName="state" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+                <ScalarProperty Name="preferredAddress" ColumnName="preferredAddress" />
+                <ScalarProperty Name="AddressTypeid" ColumnName="AddressTypeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AddressTypes">
+            <EntityTypeMapping TypeName="newEventManSQLModel.AddressType">
+              <MappingFragment StoreEntitySet="AddressType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="newEventManSQLModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Allergies">
+            <EntityTypeMapping TypeName="newEventManSQLModel.Allergy">
+              <MappingFragment StoreEntitySet="Allergies">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Participantid" ColumnName="Participantid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emails">
+            <EntityTypeMapping TypeName="newEventManSQLModel.Email">
+              <MappingFragment StoreEntitySet="Email">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="emailAddress" ColumnName="emailAddress" />
+                <ScalarProperty Name="altEmail" ColumnName="altEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Events">
+            <EntityTypeMapping TypeName="newEventManSQLModel.Event">
+              <MappingFragment StoreEntitySet="Event">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="startTime" ColumnName="startTime" />
+                <ScalarProperty Name="endTime" ColumnName="endTime" />
+                <ScalarProperty Name="Gpslocationid" ColumnName="Gpslocationid" />
+                <ScalarProperty Name="EventTypeid" ColumnName="EventTypeid" />
+                <ScalarProperty Name="Addressid" ColumnName="Addressid" />
+                <ScalarProperty Name="Adminid" ColumnName="Adminid" />
+                <ScalarProperty Name="EventProgramid" ColumnName="EventProgramid" />
+                <ScalarProperty Name="EventCatergoryid" ColumnName="EventCatergoryid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventCatergories">
+            <EntityTypeMapping TypeName="newEventManSQLModel.EventCatergory">
+              <MappingFragment StoreEntitySet="EventCatergory">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventPrograms">
+            <EntityTypeMapping TypeName="newEventManSQLModel.EventProgram">
+              <MappingFragment StoreEntitySet="EventProgram">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="timedate" ColumnName="timedate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EventTypes">
+            <EntityTypeMapping TypeName="newEventManSQLModel.EventType">
+              <MappingFragment StoreEntitySet="EventType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Feedbacks">
+            <EntityTypeMapping TypeName="newEventManSQLModel.Feedback">
+              <MappingFragment StoreEntitySet="Feedback">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="ParticipantEventid" ColumnName="ParticipantEventid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gpslocations">
+            <EntityTypeMapping TypeName="newEventManSQLModel.Gpslocation">
+              <MappingFragment StoreEntitySet="Gpslocation">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="latitude" ColumnName="latitude" />
+                <ScalarProperty Name="longitude" ColumnName="longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuCatergories">
+            <EntityTypeMapping TypeName="newEventManSQLModel.MenuCatergory">
+              <MappingFragment StoreEntitySet="MenuCatergory">
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MenuItems">
+            <EntityTypeMapping TypeName="newEventManSQLModel.MenuItem">
+              <MappingFragment StoreEntitySet="MenuItem">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="MenuCatergoryid" ColumnName="MenuCatergoryid" />
+                <ScalarProperty Name="itemName" ColumnName="itemName" />
+                <ScalarProperty Name="itemDesc" ColumnName="itemDesc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Newsletters">
+            <EntityTypeMapping TypeName="newEventManSQLModel.Newsletter">
+              <MappingFragment StoreEntitySet="Newsletter">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="updates" ColumnName="updates" />
+                <ScalarProperty Name="Participantid" ColumnName="Participantid" />
+                <ScalarProperty Name="NewsletterTypeid" ColumnName="NewsletterTypeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsletterTypes">
+            <EntityTypeMapping TypeName="newEventManSQLModel.NewsletterType">
+              <MappingFragment StoreEntitySet="NewsletterType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="catergoryName" ColumnName="catergoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notifications">
+            <EntityTypeMapping TypeName="newEventManSQLModel.Notification">
+              <MappingFragment StoreEntitySet="Notification">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="ParticipantEventid" ColumnName="ParticipantEventid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Participants">
+            <EntityTypeMapping TypeName="newEventManSQLModel.Participant">
+              <MappingFragment StoreEntitySet="Participant">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ParticipantTypeid" ColumnName="ParticipantTypeid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParticipantEvents">
+            <EntityTypeMapping TypeName="newEventManSQLModel.ParticipantEvent">
+              <MappingFragment StoreEntitySet="ParticipantEvent">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="attend" ColumnName="attend" />
+                <ScalarProperty Name="Eventid" ColumnName="Eventid" />
+                <ScalarProperty Name="Participantid" ColumnName="Participantid" />
+                <ScalarProperty Name="PreferredFoodid" ColumnName="PreferredFoodid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParticipantTypes">
+            <EntityTypeMapping TypeName="newEventManSQLModel.ParticipantType">
+              <MappingFragment StoreEntitySet="ParticipantType">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhoneNumbers">
+            <EntityTypeMapping TypeName="newEventManSQLModel.PhoneNumber">
+              <MappingFragment StoreEntitySet="PhoneNumber">
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="altPhone" ColumnName="altPhone" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PreferredFoods">
+            <EntityTypeMapping TypeName="newEventManSQLModel.PreferredFood">
+              <MappingFragment StoreEntitySet="PreferredFood">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="MenuItemid" ColumnName="MenuItemid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PrivateInvites">
+            <EntityTypeMapping TypeName="newEventManSQLModel.PrivateInvite">
+              <MappingFragment StoreEntitySet="PrivateInvites">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ParticipantEventid" ColumnName="ParticipantEventid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="newEventManSQLModel.Profile">
+              <MappingFragment StoreEntitySet="Profile">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Emailid" ColumnName="Emailid" />
+                <ScalarProperty Name="PhoneNumberid" ColumnName="PhoneNumberid" />
+                <ScalarProperty Name="Addressid" ColumnName="Addressid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Speakers">
+            <EntityTypeMapping TypeName="newEventManSQLModel.Speaker">
+              <MappingFragment StoreEntitySet="Speakers">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="topic" ColumnName="topic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sponsors">
+            <EntityTypeMapping TypeName="newEventManSQLModel.Sponsor">
+              <MappingFragment StoreEntitySet="Sponsor">
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="newEventManSQLModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="eventSpeaker" TypeName="newEventManSQLModel.eventSpeaker" StoreEntitySet="eventSpeaker">
+            <EndProperty Name="Speakers">
+              <ScalarProperty Name="id" ColumnName="Speakersid" />
+            </EndProperty>
+            <EndProperty Name="Event">
+              <ScalarProperty Name="id" ColumnName="Eventid" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="EventSponsor" TypeName="newEventManSQLModel.EventSponsor" StoreEntitySet="EventSponsor">
+            <EndProperty Name="Sponsor">
+              <ScalarProperty Name="id" ColumnName="Sponsorid" />
+            </EndProperty>
+            <EndProperty Name="Event">
+              <ScalarProperty Name="id" ColumnName="Eventid" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

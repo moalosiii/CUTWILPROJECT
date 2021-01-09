@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1c0a02b0df0146499bd67d72703e3008" Name="Diagram1" ZoomLevel="40">
+        <EntityTypeShape EntityType="newEventManSQLModel.Address" Width="1.5" PointX="3.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.AddressType" Width="1.5" PointX="1.5" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.Admin" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.Allergy" Width="1.5" PointX="6" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.Email" Width="1.5" PointX="3.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.Event" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.EventCatergory" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.EventProgram" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.EventType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.Feedback" Width="1.5" PointX="10.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.Gpslocation" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.MenuCatergory" Width="1.5" PointX="1.5" PointY="30.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.MenuItem" Width="1.5" PointX="3.75" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.Newsletter" Width="1.5" PointX="6" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.NewsletterType" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.Notification" Width="1.5" PointX="10.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.Participant" Width="1.5" PointX="3.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.ParticipantEvent" Width="1.5" PointX="8.25" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.ParticipantType" Width="1.5" PointX="1.5" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.PhoneNumber" Width="1.5" PointX="3.75" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.PreferredFood" Width="1.5" PointX="6" PointY="30.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.PrivateInvite" Width="1.5" PointX="10.5" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.Profile" Width="1.5" PointX="6" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.Speaker" Width="1.5" PointX="3.75" PointY="25.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.Sponsor" Width="1.5" PointX="3.75" PointY="27.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="newEventManSQLModel.sysdiagram" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="newEventManSQLModel.FKAddress553385" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKEvent152552" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKProfile737390" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKEvent472093" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKProfile351736" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKAllergies644926" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKProfile937823" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKEvent170926" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKEvent30760" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKEvent334644" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKEvent996150" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKParticipan920909" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKFeedback857750" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKMenuItem218851" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKPreferredF132570" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKNewsletter106370" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKNewsletter752462" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKNotificati446266" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKParticipan261897" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKParticipan860186" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKProfile442662" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKParticipan794185" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKPrivateInv659836" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKProfile430748" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKProfile785431" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.FKProfile996277" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.eventSpeaker" ManuallyRouted="false" />
+        <AssociationConnector Association="newEventManSQLModel.EventSponsor" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
