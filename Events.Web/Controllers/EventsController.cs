@@ -49,7 +49,7 @@ namespace Events.Web.Controllers
 
             Dictionary<string, object> eventObj = new Dictionary<string, object>();
             Dictionary<string, object> saveEventObj;
-                      
+
 
 
             if (model != null && this.ModelState.IsValid)
@@ -72,12 +72,12 @@ namespace Events.Web.Controllers
                     Location = model.Location,
                     IsPublic = model.IsPublic,
                     Id = saveEventObj["objectId"].ToString()
-                    
+
 
                 };
 
                 //save to backendless
-                
+
                 this.db.Events.Add(e);
                 this.db.SaveChanges();
                 this.AddNotification("Event created.", NotificationType.INFO);
@@ -113,6 +113,9 @@ namespace Events.Web.Controllers
 
             if (model != null && this.ModelState.IsValid)
             {
+                //create backendless object and update fields
+                
+
                 eventToEdit.Title = model.Title;
                 eventToEdit.StartDateTime = model.StartDateTime;
                 eventToEdit.Duration = model.Duration;
@@ -120,6 +123,14 @@ namespace Events.Web.Controllers
                 eventToEdit.Location = model.Location;
                 eventToEdit.IsPublic = model.IsPublic;
 
+                string WhereClause = id;
+                Dictionary<string, object> savedEvent = Backendless.Data.Of("Event").FindById(WhereClause);
+
+                savedEvent["name"] = model.Title;
+                savedEvent["startTime"] = model.StartDateTime;
+                savedEvent["description"] = model.Description;
+
+                Backendless.Persistence.Of("Event").Save(savedEvent);//update
                 this.db.SaveChanges();
                 this.AddNotification("Event edited.", NotificationType.INFO);
                 return this.RedirectToAction("My");
@@ -131,6 +142,7 @@ namespace Events.Web.Controllers
         [HttpGet]
         public ActionResult Delete(string id)
         {
+
             var eventToDelete = this.LoadEvent(id);
             if (eventToDelete == null)
             {
@@ -146,12 +158,19 @@ namespace Events.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(string id, EventInputModel model)
         {
+            //load id to objectId for backendless
+
             var eventToDelete = this.LoadEvent(id);
             if (eventToDelete == null)
             {
                 this.AddNotification("Cannot delete event #" + id, NotificationType.ERROR);
                 return this.RedirectToAction("My");
             }
+            //delete from backendless using ID ERROR
+            //Long result = Backendless.Data.Of("TABLE-NAME").Remove("WHERE ");
+            //let's find an object first before we delete it.
+            string WhereClause = "objectId = '" + id + "'";
+            Backendless.Data.Of("Event").Remove(WhereClause);
 
             this.db.Events.Remove(eventToDelete);
             this.db.SaveChanges();
