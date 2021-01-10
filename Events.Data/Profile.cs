@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Events.Data.EventsManDatabase
+namespace Events.Data
 {
     using System;
     using System.Collections.Generic;
@@ -23,11 +23,11 @@ namespace Events.Data.EventsManDatabase
         public string Addressid { get; set; }
     
         public virtual Address Address { get; set; }
-        public virtual Admin Admin { get; set; }
-        public virtual Email Email { get; set; }
-        public virtual Participant Participant { get; set; }
-        public virtual PhoneNumber PhoneNumber { get; set; }
-        public virtual Speaker Speaker { get; set; }
-        public virtual Sponsor Sponsor { get; set; }
+        //public virtual Admin Admin { get; set; }
+        //public virtual Email Email { get; set; }
+        //public virtual Participant Participant { get; set; }
+        //public virtual PhoneNumber PhoneNumber { get; set; }
+        //public virtual Speaker Speaker { get; set; }
+        //public virtual Sponsor Sponsor { get; set; }
     }
 }

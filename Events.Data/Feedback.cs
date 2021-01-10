@@ -7,17 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Events.Data.EventsManDatabase
+namespace Events.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class sysdiagram
+    public partial class Feedback
     {
-        public string name { get; set; }
-        public int principal_id { get; set; }
-        public int diagram_id { get; set; }
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public string id { get; set; }
+        public Nullable<int> rating { get; set; }
+        public string comment { get; set; }
+        public string ParticipantEventid { get; set; }
+    
+        public virtual ParticipantEvent ParticipantEvent { get; set; }
     }
 }

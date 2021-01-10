@@ -7,23 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Events.Data.EventsManDatabase
+namespace Events.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class AddressType
+    public partial class MenuCatergory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AddressType()
+        public MenuCatergory()
         {
-            this.Addresses = new HashSet<Address>();
+            this.MenuItems = new HashSet<MenuItem>();
         }
     
         public string id { get; set; }
-        public string type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<MenuItem> MenuItems { get; set; }
     }
 }

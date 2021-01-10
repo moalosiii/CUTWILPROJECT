@@ -7,31 +7,35 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Events.Data.EventsManDatabase
+namespace Events.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Participant
+    public partial class Address
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Participant()
+        public Address()
         {
-            this.Allergies = new HashSet<Allergy>();
-            this.Newsletters = new HashSet<Newsletter>();
-            this.ParticipantEvents = new HashSet<ParticipantEvent>();
+            this.Events = new HashSet<Event>();
+            this.Profiles = new HashSet<Profile>();
         }
     
         public string id { get; set; }
-        public string ParticipantTypeid { get; set; }
+        public string streetNumber1 { get; set; }
+        public string streetNumber2 { get; set; }
+        public string streetNumber3 { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string country { get; set; }
+        public string postalCode { get; set; }
+        public string preferredAddress { get; set; }
+        public string AddressTypeid { get; set; }
     
+        public virtual AddressType AddressType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Allergy> Allergies { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Newsletter> Newsletters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ParticipantEvent> ParticipantEvents { get; set; }
-        public virtual ParticipantType ParticipantType { get; set; }
-        public virtual Profile Profile { get; set; }
+        public virtual ICollection<Profile> Profiles { get; set; }
     }
 }

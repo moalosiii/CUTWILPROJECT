@@ -7,23 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Events.Data.EventsManDatabase
+namespace Events.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class EventProgram
+    public partial class Sponsor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EventProgram()
+        public Sponsor()
         {
             this.Events = new HashSet<Event>();
         }
     
         public string id { get; set; }
-        public Nullable<int> description { get; set; }
-        public Nullable<System.DateTime> timedate { get; set; }
     
+        //public virtual Profile Profile { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Event> Events { get; set; }
     }

@@ -7,14 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Events.Data.EventsManDatabase
+namespace Events.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class PrivateInvite
+    public partial class Notification
     {
         public string id { get; set; }
+        public string message { get; set; }
         public string ParticipantEventid { get; set; }
     
         public virtual ParticipantEvent ParticipantEvent { get; set; }

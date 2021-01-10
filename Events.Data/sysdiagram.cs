@@ -7,19 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Events.Data.EventsManDatabase
+namespace Events.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Newsletter
+    public partial class sysdiagram
     {
-        public string id { get; set; }
-        public string updates { get; set; }
-        public string Participantid { get; set; }
-        public string NewsletterTypeid { get; set; }
-    
-        public virtual NewsletterType NewsletterType { get; set; }
-        public virtual Participant Participant { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

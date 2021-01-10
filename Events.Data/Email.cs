@@ -7,24 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Events.Data.EventsManDatabase
+namespace Events.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class PreferredFood
+    public partial class Email
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PreferredFood()
+        public Email()
         {
-            this.ParticipantEvents = new HashSet<ParticipantEvent>();
+            this.Profiles = new HashSet<Profile>();
         }
     
         public string id { get; set; }
-        public string MenuItemid { get; set; }
+        public string emailAddress { get; set; }
+        public string altEmail { get; set; }
     
-        public virtual MenuItem MenuItem { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ParticipantEvent> ParticipantEvents { get; set; }
+        public virtual ICollection<Profile> Profiles { get; set; }
     }
 }

@@ -90,123 +90,123 @@
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="ApplicationDbContext.cs" />
     <Compile Include="Comment.cs" />
-    <Compile Include="Event.cs" />
-    <Compile Include="EventsManDatabase\Address.cs">
+    <Compile Include="Address.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\AddressType.cs">
+    <Compile Include="AddressType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Admin.cs">
+    <Compile Include="Admin.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Allergy.cs">
+    <Compile Include="Allergy.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Email.cs">
+    <Compile Include="Email.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Event.cs">
+    <Compile Include="Event.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\EventCatergory.cs">
+    <Compile Include="EventCatergory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\EventProgram.cs">
+    <Compile Include="EventProgram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\EventType.cs">
+    <Compile Include="EventType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Feedback.cs">
+    <Compile Include="Feedback.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Gpslocation.cs">
+    <Compile Include="Gpslocation.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\MenuCatergory.cs">
+    <Compile Include="MenuCatergory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\MenuItem.cs">
+    <Compile Include="MenuItem.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Model1.Context.cs">
+    <Compile Include="Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Model1.cs">
+    <Compile Include="Model1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Model1.Designer.cs">
+    <Compile Include="Model1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Newsletter.cs">
+    <Compile Include="Newsletter.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\NewsletterType.cs">
+    <Compile Include="NewsletterType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Notification.cs">
+    <Compile Include="Notification.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Participant.cs">
+    <Compile Include="Participant.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\ParticipantEvent.cs">
+    <Compile Include="ParticipantEvent.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\ParticipantType.cs">
+    <Compile Include="ParticipantType.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\PhoneNumber.cs">
+    <Compile Include="PhoneNumber.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\PreferredFood.cs">
+    <Compile Include="PreferredFood.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\PrivateInvite.cs">
+    <Compile Include="PrivateInvite.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Profile.cs">
+    <Compile Include="Profile.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Speaker.cs">
+    <Compile Include="Speaker.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\Sponsor.cs">
+    <Compile Include="Sponsor.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="EventsManDatabase\sysdiagram.cs">
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Migrations\DbMigrationsConfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="EventsManDatabase\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="EventsManDatabase\Model1.edmx">
+    <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="EventsManDatabase\Model1.edmx.diagram">
+    <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="EventsManDatabase\Model1.Context.tt">
+    <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="EventsManDatabase\Model1.tt">
+    <Content Include="Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>

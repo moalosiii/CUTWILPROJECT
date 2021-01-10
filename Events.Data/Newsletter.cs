@@ -7,18 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Events.Data.EventsManDatabase
+namespace Events.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Feedback
+    public partial class Newsletter
     {
         public string id { get; set; }
-        public Nullable<int> rating { get; set; }
-        public string comment { get; set; }
-        public string ParticipantEventid { get; set; }
+        public string updates { get; set; }
+        public string Participantid { get; set; }
+        public string NewsletterTypeid { get; set; }
     
-        public virtual ParticipantEvent ParticipantEvent { get; set; }
+        public virtual NewsletterType NewsletterType { get; set; }
+        public virtual Participant Participant { get; set; }
     }
 }
