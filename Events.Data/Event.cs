@@ -25,7 +25,7 @@ namespace Events.Data
             this.IsPublic = true;
             this.StartDateTime = DateTime.Now;
         }
-    
+
         public string Id { get; set; }
         public string objectId { get; set; }
 

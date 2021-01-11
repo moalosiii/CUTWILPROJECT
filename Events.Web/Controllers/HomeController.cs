@@ -42,5 +42,10 @@ namespace Events.Web.Controllers
 
             return this.PartialView("_EventDetails", eventDetails);
         }
+
+        public ActionResult Homepage()
+        {
+            return View();
+        }
     }
 }
