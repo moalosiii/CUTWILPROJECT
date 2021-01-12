@@ -361,7 +361,7 @@
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\_EventEditorForm.cshtml" />
     <Content Include="Views\Events\Delete.cshtml" />
-    <Content Include="Views\Home\Homepage.cshtml" />
+    <Content Include="Views\Account\Homepage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

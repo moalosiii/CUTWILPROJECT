@@ -10,6 +10,7 @@ namespace Events.Web.Controllers
 {
     public class HomeController : BaseController
     {
+        [Authorize]
         public ActionResult Index()
         {
             var events = this.db.Events

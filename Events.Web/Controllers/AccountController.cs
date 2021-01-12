@@ -53,7 +53,13 @@ namespace Events.Web.Controllers
                 _userManager = value;
             }
         }
-
+        //[AllowAnonymous] allows person to access this page anonymously
+        //change link from navigation to Homepage
+        [AllowAnonymous]
+        public ActionResult Homepage()
+        {
+            return View();
+        }
         //
         // GET: /Account/Login
         [AllowAnonymous]
