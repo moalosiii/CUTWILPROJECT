@@ -39,7 +39,7 @@ namespace Events.Data
 
         public TimeSpan? Duration { get; set; }
 
-        public DateTime? endTime { get; set; }
+        public DateTime endTime { get; set; }
         public string AuthorId { get; set; }
 
         public virtual ApplicationUser Author { get; set; }

@@ -58,6 +58,7 @@ namespace Events.Web.Controllers
                 eventObj["name"] = model.Title;
                 eventObj["description"] = model.Description;
                 eventObj["startTime"] = model.StartDateTime;
+                eventObj["endTime"] = model.endDateTime;
                 //save to backendless
                 saveEventObj = Backendless.Data.Of("Event").Save(eventObj);
 
@@ -67,6 +68,7 @@ namespace Events.Web.Controllers
                     AuthorId = this.User.Identity.GetUserId(),
                     Title = model.Title,
                     StartDateTime = model.StartDateTime,
+                    endTime = model.endDateTime,
                     Duration = model.Duration,
                     Description = model.Description,
                     Location = model.Location,

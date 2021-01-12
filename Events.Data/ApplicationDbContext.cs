@@ -17,6 +17,8 @@ namespace Events.Data
 
         public IDbSet<EventType> EventType { get; set; }
 
+        public IDbSet<Profile> ParticipantProfile { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

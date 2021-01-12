@@ -16,8 +16,12 @@ namespace Events.Web.Models
         public string Title { get; set; }
 
         [DataType(DataType.DateTime)]
-        [Display(Name = "Date and Time *")]
+        [Display(Name = "start Date and Time *")]
         public DateTime StartDateTime { get; set; }
+
+        [DataType(DataType.DateTime)]
+        [Display(Name = "end Date and Time *")]
+        public DateTime endDateTime { get; set; }
 
         public TimeSpan? Duration { get; set; }
 
@@ -35,6 +39,7 @@ namespace Events.Web.Models
             {
                 Title = e.Title,
                 StartDateTime = e.StartDateTime,
+                endDateTime = e.endTime,
                 Duration = e.Duration,
                 Location = e.Location,
                 Description = e.Description,
