@@ -26,7 +26,7 @@ namespace Events.Web.Controllers
             });
         }
 
-        public ActionResult EventDetailsById(int id)
+        public ActionResult EventDetailsById(string id)
         {
             var currentUserId = this.User.Identity.GetUserId();
             var isAdmin = this.IsAdmin();
@@ -41,6 +41,11 @@ namespace Events.Web.Controllers
             this.ViewBag.CanEdit = isOwner || isAdmin;
 
             return this.PartialView("_EventDetails", eventDetails);
+        }
+
+        public ActionResult Homepage()
+        {
+            return View();
         }
     }
 }

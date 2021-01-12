@@ -15,9 +15,14 @@ namespace Events.Data
 
         public IDbSet<Comment> Comments { get; set; }
 
+        public IDbSet<EventType> EventType { get; set; }
+
+        public IDbSet<Profile> ParticipantProfile { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
+
         }
 
         public static ApplicationDbContext Create()

@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Events.Web.Models;
 using Events.Data;
+using BackendlessAPI;
 
 namespace Events.Web.Controllers
 {
@@ -69,6 +70,8 @@ namespace Events.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
+            BackendlessUser userLogin;
+
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -77,9 +80,12 @@ namespace Events.Web.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+
+
             switch (result)
             {
                 case SignInStatus.Success:
+                    userLogin = Backendless.UserService.Login(model.Email, model.Password);
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -152,6 +158,11 @@ namespace Events.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                BackendlessUser newUser = new BackendlessUser();
+                newUser.SetProperty("email",model.Email);
+                newUser.SetProperty("password", model.Password);
+                newUser.SetProperty("name", model.FullName);
+
                 var user = new ApplicationUser
                 {
                     UserName = model.Email,
@@ -159,10 +170,11 @@ namespace Events.Web.Controllers
                     FullName = model.FullName
                 };                
                 var result = await UserManager.CreateAsync(user, model.Password);
+                newUser = Backendless.UserService.Register(newUser);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    newUser = Backendless.UserService.Login(model.Email, model.Password);
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);

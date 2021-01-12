@@ -230,16 +230,19 @@
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ParticipantController.cs" />
     <Compile Include="Extensions\NotificationExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AllParticipantList.cs" />
     <Compile Include="Models\CommentViewModel.cs" />
     <Compile Include="Models\EventDetailsViewModel.cs" />
     <Compile Include="Models\EventInputModel.cs" />
     <Compile Include="Models\EventViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ParticipantModelView.cs" />
     <Compile Include="Models\UpcomingPassedEventsViewModel.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -250,6 +253,20 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cutLogo.jpg" />
+    <Content Include="Content\cutLogo2.jpg" />
+    <Content Include="Content\logincss\animate.css" />
+    <Content Include="Content\logincss\bootstrap-grid.css" />
+    <Content Include="Content\logincss\bootstrap-grid.min.css" />
+    <Content Include="Content\logincss\bootstrap-reboot.css" />
+    <Content Include="Content\logincss\bootstrap-reboot.min.css" />
+    <Content Include="Content\logincss\bootstrap.css" />
+    <Content Include="Content\logincss\bootstrap.min.css" />
+    <Content Include="Content\logincss\hamburgers.css" />
+    <Content Include="Content\logincss\hamburgers.min.css" />
+    <Content Include="Content\logincss\main.css" />
+    <Content Include="Scripts\js\main.js" />
+    <Content Include="Content\logincss\util.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -271,13 +288,25 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Content\logincss\bootstrap-grid.css.map" />
+    <Content Include="Content\logincss\bootstrap-grid.min.css.map" />
+    <Content Include="Content\logincss\bootstrap-reboot.css.map" />
+    <Content Include="Content\logincss\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\logincss\bootstrap.css.map" />
+    <Content Include="Content\logincss\bootstrap.min.css.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\bootstrap.js" />
+    <Content Include="Scripts\js\bootstrap.min.js" />
+    <Content Include="Scripts\js\popper.js" />
+    <Content Include="Scripts\js\popper.min.js" />
+    <Content Include="Scripts\js\tooltip.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
@@ -286,6 +315,11 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="select2\select2.css" />
+    <Content Include="select2\select2.js" />
+    <Content Include="select2\select2.min.css" />
+    <Content Include="select2\select2.min.js" />
+    <Content Include="tilt\tilt.jquery.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -327,9 +361,11 @@
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\_EventEditorForm.cshtml" />
     <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Home\Homepage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="Views\Participant\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
