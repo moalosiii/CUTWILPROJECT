@@ -8,6 +8,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BackendlessAPI;
+using System.Net.Mail;
+using System.Net;
 
 namespace Events.Web.Controllers
 {
@@ -29,6 +31,23 @@ namespace Events.Web.Controllers
             {
                 UpcomingEvents = upcomingEvents,
                 PassedEvents = passedEvents
+            });
+        }
+
+        public ActionResult Participants()
+        {
+            string currentUserId = User.Identity.GetUserId();
+            var participants = this.db.ParticipantProfile
+                .Where(e => e.id != null)
+                .Select(ParticipantModelView.ViewModel);
+
+            var participators = participants.Where(e => e.id != null);
+
+            return View(new AllParticipantList()
+            {
+                //return a list of all participants
+                participants = participators
+
             });
         }
 
@@ -180,6 +199,33 @@ namespace Events.Web.Controllers
             return this.RedirectToAction("My");
         }
 
+        public ActionResult MailListing()
+        {
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult MailListing(SendMailViewModel model)
+        {
+            MailMessage mm = new MailMessage("wilfleeta@gmail.com", model.To, model.Subject, model.Body);
+            mm.Subject = model.Subject;
+            mm.Body = model.Body;
+            mm.IsBodyHtml = false;
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.EnableSsl = true;
+
+            NetworkCredential nc = new NetworkCredential("wilfleeta@gmail.com", "fleet'a@2020");
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = nc;
+            smtp.Send(mm);
+            this.AddNotification("Email Sent", NotificationType.INFO);
+            return View();
+        }
+                
 
         private Event LoadEvent(string id)
         {

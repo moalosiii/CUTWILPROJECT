@@ -1,0 +1,60 @@
+﻿@model Events.Web.Models.SendMailViewModel
+
+@{
+    ViewBag.Title = "MailListing";
+}
+
+<h2>MailListing</h2>
+<head>
+    <title>Sending Mails</title>
+</head>
+<body>
+    @using (Html.BeginForm("MailListing", "Events", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <Left>
+            <div class="row-fluid">
+                <div class="span12">
+                    <h2>Send Email using Webmail Helper</h2>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>
+                                <label>To: </label>
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.To)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Subject: </label>
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Subject)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Body: </label>
+                            </td>                            
+                            <td>
+                                @Html.TextAreaFor(model => model.Body, new { rows = "15", cols = "25" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="send" class="btn btn-default" />
+                                        @Html.ActionLink("Cancel", "My", null, htmlAttributes: new { @class = "btn" })
+                                    </div>
+                                </div>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </Left>
+    }
+</body>
