@@ -146,7 +146,16 @@ namespace Events.Data.Migrations
                     new Comment() { Text = "new comment", Author = context.Users.First() }
                 }
             });
-            context.SaveChanges();
+
+            try
+            {
+                context.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            
         }
     }
 }

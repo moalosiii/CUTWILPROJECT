@@ -369,7 +369,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
-    <Folder Include="Views\Participant\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
