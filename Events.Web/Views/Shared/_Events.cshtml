@@ -1,29 +1,54 @@
 ﻿@model Events.Web.Models.UpcomingPassedEventsViewModel
 
-<h1 class="event-group-heading">Upcoming Events</h1>
 
-<div class="row">
-    @if (Model.UpcomingEvents.Any())
-    {
-        @Html.DisplayFor(x => x.UpcomingEvents)
-    }
-    else
-    {
-        <div class="col-md-4 col-sm-6 col-xs-12">No events</div>
-    }
-</div>
-
-<h1 class="event-group-heading">Past Events</h1>
-
-<div class="row">
-    @if (Model.PassedEvents.Any())
-    {
-        @Html.DisplayFor(x => x.PassedEvents)
-    }
-    else
-    {
-        <div class="col-md-4 col-sm-6 col-xs-12">No events</div>
-    }
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">
+            <i class="fas fa-chart-pie mr-1"></i>
+            Events
+        </h3>
+        <div class="card-tools">
+            <ul class="nav nav-pills ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Future</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#sales-chart" data-toggle="tab">Passed</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="tab-content p-0">
+            <!-- Morris chart - Sales -->
+            <div class="chart tab-pane active" 
+                 style="position: relative; height: 300px;">
+                <div class="row">
+                    @if (Model.UpcomingEvents.Any())
+                    {
+                        @Html.DisplayFor(x => x.UpcomingEvents)
+                    }
+                    else
+                    {
+                        <div class="col-md-4 col-sm-6 col-xs-12">No events</div>
+                    }
+                </div>
+            </div>
+            <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
+                <div class="row">
+                    @if (Model.PassedEvents.Any())
+                    {
+                        @Html.DisplayFor(x => x.PassedEvents)
+                    }
+                    else
+                    {
+                        <div class="col-md-4 col-sm-6 col-xs-12">No events</div>
+                    }
+                </div>
+             </div>
+        </div>
+    </div>
+    <!-- /.row (main row) -->
 </div>
 
 @section scripts {
