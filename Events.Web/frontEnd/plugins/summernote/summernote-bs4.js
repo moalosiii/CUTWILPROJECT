@@ -1769,7 +1769,7 @@
       /** @property {String} blank */
       blank: blankHTML,
       /** @property {String} emptyPara */
-      emptyPara: "<p>" + blankHTML + "</p>",
+      emptyPara: " " + blankHTML + " ",
       makePredByNodeName: makePredByNodeName,
       isEditable: isEditable,
       isControlSizing: isControlSizing,

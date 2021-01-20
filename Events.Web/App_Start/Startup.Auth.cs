@@ -7,14 +7,18 @@ using Microsoft.Owin.Security.Google;
 using Owin;
 using Events.Web.Models;
 using Events.Data;
+using BackendlessAPI;
 
+[assembly:OwinStartupAttribute(typeof(Events.Web.Startup))]
 namespace Events.Web
 {
     public partial class Startup
     {
-        // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
+        //For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
+            
+            Backendless.InitApp("C4CDD100-3EE1-622D-FF8F-CBD84A761300", "78E35C38-0CC7-4A2C-9422-EC01D495773F");
             // Configure the db context, user manager and signin manager to use a single instance per request
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);

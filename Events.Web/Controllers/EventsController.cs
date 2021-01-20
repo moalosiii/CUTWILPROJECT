@@ -16,7 +16,7 @@ namespace Events.Web.Controllers
     [Authorize]
     public class EventsController : BaseController
     {
-
+        
         public ActionResult My()
         {
             string currentUserId = this.User.Identity.GetUserId();
@@ -36,7 +36,7 @@ namespace Events.Web.Controllers
 
         public ActionResult Participants()
         {
-            string currentUserId = User.Identity.GetUserId();
+
             var participants = this.db.ParticipantProfile
                 .Where(e => e.id != null)
                 .Select(ParticipantModelView.ViewModel);
@@ -45,10 +45,15 @@ namespace Events.Web.Controllers
 
             return View(new AllParticipantList()
             {
+               
                 //return a list of all participants
                 participants = participators
 
             });
+        }
+        public ActionResult Index()
+        {
+            return View(db.Users.ToList());
         }
 
         // GET: Events
@@ -222,6 +227,7 @@ namespace Events.Web.Controllers
             smtp.UseDefaultCredentials = false;
             smtp.Credentials = nc;
             smtp.Send(mm);
+          //  ServicePointManager.Expect100Continue = false;
             this.AddNotification("Email Sent", NotificationType.INFO);
             return View();
         }

@@ -16,6 +16,7 @@ namespace Events.Web.Models
         public string password { get; set; }
 
         public string id { get; set; }
+
         public static Expression<Func<Profile, ParticipantModelView>> ViewModel
         {
             get
