@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using BackendlessAPI;
 using System.Net.Mail;
 using System.Net;
+using BackendlessAPI.Persistence;
 
 namespace Events.Web.Controllers
 {
@@ -36,6 +37,52 @@ namespace Events.Web.Controllers
 
         public ActionResult Participants()
         {
+            //collect all the participants we have in Backendless
+            //then afterwards, save them in them in our SQL
+            //and then we gonna have to retreave them and display
+            //them on the list of participants page and i think
+            //that can do a trick.
+
+            //load allContacts:
+            DataQueryBuilder queryBuilder = DataQueryBuilder.Create();
+            queryBuilder.AddGroupBy("name");
+
+            //string WhereClause = "'id'='NOT NULL'";
+            //we are using the table 'users' to fill Participants dictionary
+            IList<Dictionary<string, object>> Participants = Backendless.Data.Of("Users").Find(queryBuilder);
+            Dictionary<string, object> ParticipantObject = new Dictionary<string, object>();
+            
+            Profile userProfile = new Profile(); 
+
+            foreach (var allPartis in Participants)
+            {
+                
+                var p = new Profile()
+                {
+                    //since we are getting the object value associated with the specified key(s): 
+                   
+                    Emailid = allPartis["email"].ToString(),
+                    name = allPartis["name"].ToString(),
+                    surname = allPartis["email"].ToString(),
+                    id = allPartis["objectId"].ToString()
+                };
+
+                //save each object to the profile database in SQL before leaving the foreach
+                if (allPartis.Equals(p.id))
+                {
+                    //save changes to database
+                    this.db.ParticipantProfile.Add(p);
+                    this.db.SaveChanges();
+                }
+                
+                
+
+            }
+            //then afterwards save all of them. either inside this foreach or after this foreach is complete
+            
+
+            Participants.Any();
+
             string currentUserId = User.Identity.GetUserId();
             var participants = this.db.ParticipantProfile
                 .Where(e => e.id != null)
@@ -78,10 +125,12 @@ namespace Events.Web.Controllers
                 eventObj["description"] = model.Description;
                 eventObj["startTime"] = model.StartDateTime;
                 eventObj["endTime"] = model.endDateTime;
+                eventObj["Location"] = model.Location;
+                eventObj["EventType"] = model.EventType;
                 //save to backendless
                 saveEventObj = Backendless.Data.Of("Event").Save(eventObj);
 
-
+                //do something like this for participants
                 var e = new Event()
                 {
                     AuthorId = this.User.Identity.GetUserId(),
@@ -92,6 +141,11 @@ namespace Events.Web.Controllers
                     Description = model.Description,
                     Location = model.Location,
                     IsPublic = model.IsPublic,
+                    EventType = new EventType()
+                    {
+                        id = saveEventObj["objectId"].ToString(),
+                        name = model.EventType
+                    },
                     Id = saveEventObj["objectId"].ToString()
 
 

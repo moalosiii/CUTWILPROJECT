@@ -27,6 +27,8 @@ namespace Events.Web.Models
 
         public string Description { get; set; }
 
+        public string EventType { get; set; }
+
         [MaxLength(200)]
         public string Location { get; set; }
 
@@ -43,7 +45,10 @@ namespace Events.Web.Models
                 Duration = e.Duration,
                 Location = e.Location,
                 Description = e.Description,
-                IsPublic = e.IsPublic
+                IsPublic = e.IsPublic,
+                //get event type with eventtypeid instead of eventtype
+                EventType = e.EventTypeid 
+                               
             };
         }
     }

@@ -13,9 +13,12 @@ namespace Events.Web.Models
 
         public string surname { get; set; }
 
+        public string emailid { get; set; }
+
         public string password { get; set; }
 
         public string id { get; set; }
+        //this expression is used to display on HTML
         public static Expression<Func<Profile, ParticipantModelView>> ViewModel
         {
             get
@@ -23,7 +26,7 @@ namespace Events.Web.Models
                 return e => new ParticipantModelView()
                 {
                     name = e.name,
-                    surname = e.surname,
+                    emailid = e.Emailid,
                     password = e.password,
                     id = e.id
                 };

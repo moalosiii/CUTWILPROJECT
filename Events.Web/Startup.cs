@@ -9,7 +9,7 @@ namespace Events.Web
     {
         public void Configuration(IAppBuilder app)
         {
-            Backendless.InitApp("6EE0A024-A6AD-5429-FFCD-BAE35223BD00", "C4E3C54F-3CAD-4F38-910D-D8AAB7FD6420");
+            Backendless.InitApp("1611A55F-8DD5-1D10-FFC8-74FC92FBF500", "CA514EC3-053A-42CC-A022-0835EB07FE94");
             ConfigureAuth(app);
         }
     }

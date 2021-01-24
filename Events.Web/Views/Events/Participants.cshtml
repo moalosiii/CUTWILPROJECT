@@ -6,16 +6,56 @@
 
 <h2>Participants</h2>
 <div class="row">
-    @if (Model.participants.Any())
-    {
-        @Html.DisplayFor(x => x.participants)
-    }
-    else
-    {
-        <div class="col-md-4 col-sm-6 col-xs-12">No Participants</div>
-    }
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">All Registered Participants</h3>
+                <div class="card-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control float-right" placeholder="Search"><!--we going to add search functionality using Js-->
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <!--use foreach to populate data-->
+                    @if (Model.participants.Any())
+                        {
+                            foreach (var partInfo in Model.participants)
+                                {
+                                    <tbody>
+                                        <!--populated data through the list-->
+                                        <tr>
+                                        <td>@Html.DisplayFor(modelp => partInfo.name)</td>
+                                        <td>@Html.DisplayFor(modelp => partInfo.emailid)</td>
+                                        <td><span class="tag tag-success">Registered</span></td>
+                                        </tr>
+                                    </tbody>
+                                }
+                            }
+                      else
+                            {
+                                <div class="col-md-4 col-sm-6 col-xs-12">No Participants</div>
+                            }
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
 </div>
 
-@section scripts {
-    @Scripts.Render("~/bundles/ajax")
-}
+    @section scripts {
+        @Scripts.Render("~/bundles/ajax")
+    }
