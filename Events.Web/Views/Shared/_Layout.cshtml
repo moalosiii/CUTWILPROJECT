@@ -130,7 +130,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                              with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-open">
+                        <li class="nav-item has-treeview menu-open" >
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
@@ -140,7 +140,7 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="/Events/Participants" class="nav-link active">
+                                    <a href="/Events/Participants" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Participants</p>
                                     </a>
@@ -157,6 +157,20 @@
                                         <p>Send Mail</p>
                                     </a>
                                 </li>
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+    <li class="nav-item">
+        <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">
+            <i class="far fa-circle nav-icon"></i>
+            <p>Logout</p>
+        </a>
+    </li>
+    }
+}
                             </ul>
                         </li>
                     </ul>
@@ -244,9 +258,12 @@
     <script src="~/frontEnd/dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="~/frontEnd/dist/js/demo.js"></script>
+    <script src="~/frontEnd/plugins/fullcalendar/main.min.js"></script>
+    <script src="~/frontEnd/plugins/fullcalendar-daygrid/main.min.js"></script>
+    <script src="~/frontEnd/plugins/fullcalendar-timegrid/main.min.js"></script>
+    <script src="~/frontEnd/plugins/fullcalendar-interaction/main.min.js"></script>
+    <script src="~/frontEnd/plugins/fullcalendar-bootstrap/main.min.js"></script>
 
-
-    
 </body>
 </html>
 @Scripts.Render("~/bundles/bootstrap")
