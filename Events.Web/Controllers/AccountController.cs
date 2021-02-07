@@ -56,10 +56,45 @@ namespace Events.Web.Controllers
         //[AllowAnonymous] allows person to access this page anonymously
         //change link from navigation to Homepage
         [AllowAnonymous]
-        public ActionResult Homepage()
+        public ActionResult Homepage( string returnUrl)
         {
+            ViewBag.ReturnUrl = returnUrl; // find out where this goes.. 
             return View();
         }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Homepage(LoginViewModel model, string returnUrl)
+        {
+            BackendlessUser userLogin;
+
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            // This doesn't count login failures towards account lockout
+            // To enable password failures to trigger account lockout, change to shouldLockout: true
+            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+
+
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    userLogin = Backendless.UserService.Login(model.Email, model.Password);
+                    return RedirectToLocal(returnUrl);
+                case SignInStatus.LockedOut:
+                    return View("Lockout");
+                case SignInStatus.RequiresVerification:
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                case SignInStatus.Failure:
+                default:
+                    ModelState.AddModelError("", "Invalid login attempt.");
+                    return View(model);
+            }
+        }
+
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -187,7 +222,7 @@ namespace Events.Web.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("My", "Events");
                 }
                 AddErrors(result);
             }
@@ -349,7 +384,8 @@ namespace Events.Web.Controllers
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
-                return RedirectToAction("Login");
+                //redirection to homepage if login fails
+                return RedirectToAction("My");
             }
 
             // Sign in the user with this external login provider if the user already has a login

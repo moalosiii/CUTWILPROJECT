@@ -1,0 +1,48 @@
+﻿@model Events.Web.Models.listOfSpeakers
+
+@{
+    ViewBag.Title = "List of Speakers";
+}
+
+<h2>List of Speakers</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Email</th>
+        <th>PhoneNumber</th>
+        <th>Actions</th>
+    </tr>
+
+@foreach (var item in Model.allSpeakers) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phonenumber)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditSpeaker", "Events", new { id = item.id }, new { @class = "btn btn-default" }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
+<select class="form-control select2" style="width: 100%;">
+    @foreach (var item in Model.allSpeakers)
+    {
+        <option>@Html.DisplayFor(modelItem => item.Name)</option>
+    }
+</select>

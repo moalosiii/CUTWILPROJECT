@@ -22,9 +22,20 @@ namespace Events.Web.Models
 
         public TimeSpan? Duration { get; set; }
 
+        public int maxCount { get; set; }
+
         public string Author { get; set; }
 
         public string Location { get; set; }
+
+        //this helps us get the event type and save 
+        //it in the event type table
+        public EventType eventstype { get;set; }
+
+        //now let's get the event type name and 
+        //that will help us to get a specific event.
+        public string EventTypeName { get; set; }
+
         public static Expression<Func<Event, EventViewModel>> ViewModel
         {
             get
@@ -37,7 +48,12 @@ namespace Events.Web.Models
                     endDateTime = e.endTime,
                     Duration = e.Duration,
                     Location = e.Location,
-                    Author = e.Author.FullName
+                    Author = e.Author.FullName,
+                    eventstype = e.EventType,
+                    EventTypeName = e.EventType.name 
+                    //this eventType is to get the event type and be able to generate it to a specific category
+                    //or type
+                    
                 };
             }
         }

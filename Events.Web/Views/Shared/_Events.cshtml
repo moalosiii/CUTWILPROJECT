@@ -22,7 +22,13 @@
                 <div class="row">
                     @if (Model.UpcomingEvents.Any())
                     {
-                        @Html.DisplayFor(x => x.UpcomingEvents)
+                        @Html.DisplayFor(x => x.UpcomingEvents);
+
+                        foreach (var item in Model.UpcomingEvents)
+                        {
+                            //this code will not be here... you just have to pull the entertainment
+                        }
+
                     }
                     else
                     {
@@ -59,7 +65,7 @@
                     <div class="row">
                         @if (Model.PassedEvents.Any())
                         {
-                            @Html.DisplayFor(x => x.PassedEvents)
+                            @Html.DisplayFor(x => x.PassedEvents)<!-- it actually doesn't have to pass it here!!! it has to pass it somewhere!!!!-->
                         }
                         else
                         {

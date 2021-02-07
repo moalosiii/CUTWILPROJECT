@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Events.Data
 {
@@ -18,6 +19,9 @@ namespace Events.Data
         public IDbSet<EventType> EventType { get; set; }
 
         public IDbSet<Profile> ParticipantProfile { get; set; }
+
+        public IDbSet<Speaker> Speakers { get; set; }
+
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

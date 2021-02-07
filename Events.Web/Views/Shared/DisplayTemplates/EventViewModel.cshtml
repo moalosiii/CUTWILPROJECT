@@ -5,6 +5,7 @@
         <h2>@Model.Title</h2>
         <span class="date">Start: @Model.StartDateTime</span>
         <br /><span class="date">End: @Model.endDateTime</span>
+       @** <br /><span class="dtr-title">Type: @Model.eventstype.name</span>*@
         @if (Model.Duration != null)
         {
             <span class="duration">(@Model.Duration.Value.ToString(@"hh\:mm") hours)</span>

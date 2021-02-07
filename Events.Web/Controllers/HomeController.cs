@@ -22,12 +22,15 @@ namespace Events.Web.Controllers
                 .Where(e => e.IsPublic)
                 .Select(EventViewModel.ViewModel);
 
+            //to get the list queried, you have to come here and in the MY page/controller
+            var entertainment = events.Where(e => e.EventTypeName == "Entertainment");
             var upcomingEvents = events.Where(e => e.StartDateTime > DateTime.Now);
             var passedEvents = events.Where(e => e.StartDateTime <= DateTime.Now);
             return View(new UpcomingPassedEventsViewModel()
             {
                 UpcomingEvents = upcomingEvents,
-                PassedEvents = passedEvents
+                PassedEvents = passedEvents,
+                Entertainment = entertainment
             });
         }
 

@@ -2,6 +2,7 @@
 
 @if (Model.Description != null)
 {
+    <div class="description">Event Type: @Model.EventTypeName</div>
     <div class="description">Description: @Model.Description</div>
 }
 
@@ -23,7 +24,7 @@
 }
 else
 {
-    <p>No comments</p>
+    <p></p>
 }
 
 @if (ViewBag.CanEdit)

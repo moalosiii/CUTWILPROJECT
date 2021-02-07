@@ -1,0 +1,40 @@
+﻿@model Events.Web.Models.UpcomingPassedEventsViewModel
+
+<div class="card">
+        <div class="card-header">
+            <h3 class="card-title">
+                <i class="fas fa-chart-pie mr-1"></i>
+                Events
+            </h3>
+            <div class="card-tools">
+                <ul class="nav nav-pills ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Sports</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="tab-content p-0">
+                <!-- Morris chart - Sales -->
+                <div class="chart tab-pane active"
+                     style="position: relative; height:auto;">
+                    <div class="row">
+                        @if (Model.Sports.Any())
+                        {
+                            @Html.DisplayFor(x => x.Sports)<!-- it actually doesn't have to pass it here!!! it has to pass it somewhere!!!!-->
+                        }
+                        else
+                        {
+                            <div class="col-md-4 col-sm-6 col-xs-12">No events</div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row (main row) -->
+    </div>
+
+    @section scripts {
+        @Scripts.Render("~/bundles/ajax")
+    }

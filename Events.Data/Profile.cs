@@ -28,7 +28,7 @@ namespace Events.Data
         //public virtual Email Email { get; set; }
         //public virtual Participant Participant { get; set; }
         //public virtual PhoneNumber PhoneNumber { get; set; }
-        //public virtual Speaker Speaker { get; set; }
+        public virtual Speaker Speaker { get; set; }
         //public virtual Sponsor Sponsor { get; set; }
     }
 }

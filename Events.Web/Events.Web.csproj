@@ -239,10 +239,15 @@
     <Compile Include="Models\CommentViewModel.cs" />
     <Compile Include="Models\EventDetailsViewModel.cs" />
     <Compile Include="Models\EventInputModel.cs" />
+    <Compile Include="Models\EventSpeakerInputModels.cs" />
+    <Compile Include="Models\EventTypeViewModel.cs" />
     <Compile Include="Models\EventViewModel.cs" />
+    <Compile Include="Models\listOfSpeakers.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ParticipantModelView.cs" />
     <Compile Include="Models\SendMailViewModel.cs" />
+    <Compile Include="Models\SpeakerInputForModel.cs" />
+    <Compile Include="Models\SpeakerInputModel.cs" />
     <Compile Include="Models\UpcomingPassedEventsViewModel.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -2055,6 +2060,14 @@
     <Content Include="Views\Account\Homepage.cshtml" />
     <Content Include="Views\Events\MailListing.cshtml" />
     <Content Include="Views\Events\Participants.cshtml" />
+    <Content Include="Views\Events\CreateSpeaker.cshtml" />
+    <Content Include="Views\Events\_CreateSpeakerForm.cshtml" />
+    <Content Include="Views\Events\ListSpeakers.cshtml" />
+    <Content Include="Views\Events\EditSpeaker.cshtml" />
+    <Content Include="Views\Events\EntertainmentEvents.cshtml" />
+    <Content Include="Views\Events\ConferenceEvents.cshtml" />
+    <Content Include="Views\Events\GraduationsEvents.cshtml" />
+    <Content Include="Views\Events\SportsEvents.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using Events.Web.Models;
 
 namespace Events.Web.Models
 {
@@ -20,7 +21,7 @@ namespace Events.Web.Models
         public DateTime StartDateTime { get; set; }
 
         [DataType(DataType.DateTime)]
-        [Display(Name = "end Date and Time *")]
+        [Display(Name = "end Date and Time *")]//use the if statement for defense programming
         public DateTime endDateTime { get; set; }
 
         public TimeSpan? Duration { get; set; }
@@ -29,12 +30,29 @@ namespace Events.Web.Models
 
         public string EventType { get; set; }
 
+        //get number of participants
+        public int maxCount { get; set; }
+
+        public string SpeakerName { get; set; }
+
+        public string SpeakerSurname { get; set; }
+
+        public string Speakeremail { get; set; }
+
+        public string SpeakerTopic { get; set; }
+
+        public string SpeakerphoneNumber { get; set; }
+
+        //let's get all the list of speakers in here:
+
         [MaxLength(200)]
         public string Location { get; set; }
 
         [Display(Name = "Is Public?")]
         public bool IsPublic { get; set; }
 
+        //get the list of speakers for an event and be able to use it to assign a speaker
+        
         public static EventInputModel CreateFromEvent(Event e)
         {
             return new EventInputModel()
@@ -48,8 +66,11 @@ namespace Events.Web.Models
                 IsPublic = e.IsPublic,
                 //get event type with eventtypeid instead of eventtype
                 EventType = e.EventTypeid 
-                               
+                
             };
         }
+        //add speaker and see if you can return it.
+        
+        
     }
 }

@@ -16,6 +16,9 @@ namespace Events.Web.Models
 
         public string AuthorId { get; set; }
 
+        //this helps to get the event type
+        public string  EventTypeName { get; set; }
+
         public IEnumerable<CommentViewModel> Comments { get; set; }
 
         public static Expression<Func<Event, EventDetailsViewModel>> ViewModel
@@ -27,9 +30,12 @@ namespace Events.Web.Models
                     Id = e.Id,
                     Description = e.Description,
                     Comments = e.Comments.AsQueryable().Select(CommentViewModel.ViewModel),
-                    AuthorId = e.Author.Id
+                    AuthorId = e.Author.Id,
+                    EventTypeName = e.EventType.name
                 };
             }
         }
+
+
     }
 }
