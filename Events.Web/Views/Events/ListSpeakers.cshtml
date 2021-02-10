@@ -7,7 +7,7 @@
 <h2>List of Speakers</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateSpeaker", null,htmlAttributes: new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -40,9 +40,11 @@
 }
 
 </table>
-<select class="form-control select2" style="width: 100%;">
-    @foreach (var item in Model.allSpeakers)
-    {
-        <option>@Html.DisplayFor(modelItem => item.Name)</option>
-    }
-</select>
+@*
+    <select class="form-control select2" style="width: 100%;">
+        @foreach (var item in Model.allSpeakers)
+        {
+            <option>@Html.DisplayFor(modelItem => item.Name)</option>
+        }
+    </select>
+*@

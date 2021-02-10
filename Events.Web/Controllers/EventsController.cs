@@ -187,6 +187,8 @@ namespace Events.Web.Controllers
         {
             using (ApplicationDbContext speakerEntity = new ApplicationDbContext())
             {
+
+
                 var myDatabaseEF = new SelectList(speakerEntity.ParticipantProfile.Where(e => e.Speaker.id != null).ToList(),"id","name");
                 ViewData["DBSpeakers"] = myDatabaseEF;
             }
@@ -197,6 +199,7 @@ namespace Events.Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(EventInputModel model)
         {
+            
             // assign an ID for backendless
             //save to backendless first
             //save objectId to our Event below            

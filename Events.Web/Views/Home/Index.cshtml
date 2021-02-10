@@ -4,9 +4,100 @@
     ViewBag.Title = "Public Events";
 }
 
-@Html.Partial("_Events")
-
-
-@section scripts {
-    @Scripts.Render("~/bundles/ajax")
-}
+@* @Html.Partial("_Events") *@
+<!--Let's have carousal Below-->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Entertainment</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="/Events/EntertainmentEvents">
+                                <img class="d-block w-100" src="~/Content/entertainment.jpg" alt="Entertainment picture">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Conference</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="/Events/ConferenceEvents">
+                                <img class="d-block w-100" src="~/Content/Conference.jpg" alt="Conference picture">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Sports</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="/Events/SportsEvents">
+                                <img class="d-block w-100" src="~/Content/sports.jpg" alt="Sports picture">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Graduation</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="/Events/GraduationsEvents">
+                                <img class="d-block w-100" src="~/Content/Graduations.jpg" alt="Graduation picture">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+    @section scripts {
+        @Scripts.Render("~/bundles/ajax")
+    }

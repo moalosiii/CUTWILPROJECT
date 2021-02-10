@@ -211,7 +211,7 @@ namespace Events.Web.Controllers
                     FullName = model.FullName
                 };                
                 var result = await UserManager.CreateAsync(user, model.Password);
-                newUser = Backendless.UserService.Register(newUser);
+                newUser = Backendless.UserService.Register(newUser);//register new user
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);

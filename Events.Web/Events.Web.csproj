@@ -258,8 +258,11 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Conference.jpg" />
     <Content Include="Content\cutLogo.jpg" />
     <Content Include="Content\cutLogo2.jpg" />
+    <Content Include="Content\entertainment.jpg" />
+    <Content Include="Content\Graduations.jpg" />
     <Content Include="Content\logincss\animate.css" />
     <Content Include="Content\logincss\bootstrap-grid.css" />
     <Content Include="Content\logincss\bootstrap-grid.min.css" />
@@ -270,6 +273,7 @@
     <Content Include="Content\logincss\hamburgers.css" />
     <Content Include="Content\logincss\hamburgers.min.css" />
     <Content Include="Content\logincss\main.css" />
+    <Content Include="Content\sports.jpg" />
     <Content Include="frontEnd\build\config\postcss.config.js" />
     <Content Include="frontEnd\build\config\rollup.config.js" />
     <Content Include="frontEnd\build\js\AdminLTE.js" />
