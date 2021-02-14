@@ -95,7 +95,19 @@
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="/Events/My" class="nav-link">Home</a>
                 </li>
+                @if (Request.IsAuthenticated)
+                {
+                                    <!--make this look like other layout links!!! -->
+                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <li class="nav-item d-none d-sm-inline-block">
+                            <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">Logout</a>
+                        </li>
+                    }
+                }
             </ul>
+              
             <!-- SEARCH FORM -->
             <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
@@ -113,7 +125,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="/Events/My" class="brand-link">
-                <img src="~/frontEnd/dist/img/AdminLTELogo.png" alt="CUT Event LOGO" class="brand-image img-circle elevation-3"
+                <img src="~/Content/MVC CUT logo.png" alt="CUT Event LOGO" class="brand-image img-circle elevation-3"
                      style="opacity: .8">
                 <span class="brand-text font-weight-light">CUT Events</span>
             </a>
@@ -126,82 +138,106 @@
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Events/Participants" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Participants</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/Events/Create" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Create an Event</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="/Events/MailListing" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Send Mail</p>
-                                    </a>
-                                </li>
+                    <nav class="mt-2">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                            <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+                            <li class="nav-item has-treeview menu-open">
+                                <!--here's how to activate it:-->
+                                <!--<a href="#" class="nav-link active">-->
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Events
+                                        <i class="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/Events/Create" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Create an Event</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="/Events/My" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Event Categories</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
 
-                                @if (Request.IsAuthenticated)
-                                {
-                                    <!--make this look like other layout links!!! -->
-                                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                                    {
-                                        @Html.AntiForgeryToken()
-                                        <li class="nav-item">
-                                            <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link">
-                                                <i class="far fa-circle nav-icon"></i>
-                                                <p>Logout</p>
-                                            </a>
-                                        </li>
-                                    }
-                                }
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                            </ul>
-                        </li>
-                    </ul>
+                            <li class="nav-item has-treeview menu-close">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Speakers
+                                        <i class="right fas fa-angle-left">
+                                        </i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/Events/ListSpeakers" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Manage Speakers</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        </ul>
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                        <li class="nav-item has-treeview menu-open">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Manage Speakers
-                                    <i class="right fas fa-angle-left">
-                                    </i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="/Events/ListSpeakers" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Manage Speakers</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                            <li class="nav-item has-treeview menu-close">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Participants
+                                        <i class="right fas fa-angle-left">
+                                        </i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/Events/Participants" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Manage Participants</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                    </ul>
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
+                        </ul>
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+                            <li class="nav-item has-treeview menu-close">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        miscellaneous
+                                        <i class="right fas fa-angle-left">
+                                        </i>
+                                    </p>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="/Events/MailListing" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Send Mail</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </nav>
+                    <!-- /.sidebar-menu -->
+                </div>
             <!-- /.sidebar -->
         </aside>
         <!-- Content Wrapper. Contains page content -->

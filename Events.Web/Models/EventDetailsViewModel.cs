@@ -16,8 +16,14 @@ namespace Events.Web.Models
 
         public string AuthorId { get; set; }
 
+        public DateTime StartDateTime { get; set; }//if i were to return it as DateTime2, will that be a problem though??
+
+        public DateTime EndDateTime { get; set; }
+
         //this helps to get the event type
         public string  EventTypeName { get; set; }
+
+        public string EventSpeaker { get; set; }
 
         public IEnumerable<CommentViewModel> Comments { get; set; }
 
@@ -31,7 +37,9 @@ namespace Events.Web.Models
                     Description = e.Description,
                     Comments = e.Comments.AsQueryable().Select(CommentViewModel.ViewModel),
                     AuthorId = e.Author.Id,
-                    EventTypeName = e.EventType.name
+                    EventTypeName = e.EventType.name,
+                    StartDateTime = e.StartDateTime,
+                    EndDateTime = e.endTime
                 };
             }
         }

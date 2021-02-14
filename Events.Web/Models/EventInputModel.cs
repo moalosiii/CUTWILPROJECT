@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using Events.Web.Models;
+using System.Web.Mvc;
 
 namespace Events.Web.Models
 {
@@ -35,6 +36,9 @@ namespace Events.Web.Models
 
         public string SpeakerName { get; set; }
 
+        public string SpeakerId { get; set; }
+
+
         public string SpeakerSurname { get; set; }
 
         public string Speakeremail { get; set; }
@@ -42,6 +46,8 @@ namespace Events.Web.Models
         public string SpeakerTopic { get; set; }
 
         public string SpeakerphoneNumber { get; set; }
+
+        public SelectList Speakers { get; set; }
 
         //let's get all the list of speakers in here:
 
@@ -65,7 +71,7 @@ namespace Events.Web.Models
                 Description = e.Description,
                 IsPublic = e.IsPublic,
                 //get event type with eventtypeid instead of eventtype
-                EventType = e.EventTypeid 
+                EventType = e.EventTypeid,//remember we use profile to add speakers and we test them with ids
                 
             };
         }

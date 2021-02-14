@@ -52,6 +52,7 @@ namespace Events.Data
         public virtual ICollection<Comment> Comments { get; set; }
         public string Gpslocationid { get; set; }
         public string EventTypeid { get; set; }
+        public string SpeakerEvent { get; set; }
         public string Addressid { get; set; }
         public string Adminid { get; set; }
         public string EventProgramid { get; set; }
@@ -61,6 +62,7 @@ namespace Events.Data
         public virtual Admin Admin { get; set; }
         public virtual Gpslocation Gpslocation { get; set; }
         public virtual EventType EventType { get; set; }
+        public virtual Profile speakerProfile { get; set; }
         public virtual EventProgram EventProgram { get; set; }
         public virtual EventCatergory EventCatergory { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

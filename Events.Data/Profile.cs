@@ -30,5 +30,6 @@ namespace Events.Data
         //public virtual PhoneNumber PhoneNumber { get; set; }
         public virtual Speaker Speaker { get; set; }
         //public virtual Sponsor Sponsor { get; set; }
+        public virtual ICollection<Event> Events { get; set; }
     }
 }

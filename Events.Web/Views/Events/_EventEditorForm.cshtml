@@ -20,8 +20,7 @@
                     <div class="form-group" >
                         @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-auto">
-                            <input class="form-control" id="Title" name="Title" placeholder="Event Title" required
-                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", required = "required",placeholder ="Please enter Title" } })
 
                     </div>
                   </div>
@@ -41,16 +40,16 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.StartDateTime, htmlAttributes: new { @class = "control-label col-md-3" })
                         <div class="col-md-auto">
-                            @Html.DisplayFor(m => m.StartDateTime, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.EditorFor(model => model.StartDateTime, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.StartDateTime, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Please enter start Date" } })
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" >
                         @Html.LabelFor(model => model.endDateTime, htmlAttributes: new { @class = "control-label col-md-3" })
                         <div class="col-md-auto">
-                            @Html.EditorFor(model => model.endDateTime, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.endDateTime, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Please enter End Date" } })
                         </div>
                     </div>
+                    
 
                     <script>
                         $(function () {
@@ -78,30 +77,58 @@
                     <div class="form-group">
                         @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-auto">
-                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", placeholder = "Please enter the Description of the event here", required = "required" })
                         </div>
                     </div>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-auto">
-                            <input class="form-control" name="Location" placeholder="Enter Please enter location" required
-                                   @Html.EditorFor(model => model.SpeakerTopic, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Please enter Location" } })
                         </div>
                     </div>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.SpeakerName, "List of Speakers", htmlAttributes: new { @class = "control-label col-md-2" })
+                    @*<button type="button" class="btn btn-primary" id="formButton">Add Speaker?</button>
+                    <div class="form-group" id="form1">
+                        @Html.LabelFor(model => model.SpeakerId, "List of Speakers", htmlAttributes: new { @class = "control-label col-md-2" })
                         <div class="col-md-auto">
-                            @Html.DropDownList("List of Speakers", (IEnumerable<SelectListItem>)ViewData["DBSpeakers"], new { @class = "form-control" })
+                            @Html.DropDownListFor(m => m.SpeakerName,(IEnumerable<SelectListItem>)ViewData["DBSpeakers"],"Select Speaker",new { @class = "form-control col-md-auto" })
+                        @Html.DropDownList("List of Speakers", (IEnumerable<SelectListItem>)ViewData["DBSpeakers"], new { @class = "form-control" })
                         </div>
                     </div>
+                        *@
+
+                    <script>
+                        $(document).ready(function () {
+                            $("#formButton").click(function () {
+                                $("#form1").toggle();
+                            });
+                        });
+                    </script>
+
                     <div class="form-group">
                         @Html.LabelFor(model => model.maxCount,"Number of Participants", htmlAttributes: new { @class = "control-label col-md-10" })
-                        <div class="col-md-2">
-                            <input class="form-control" type="number" name="maxCount"  placeholder="Participants" required
-                                   @Html.EditorFor(model => model.maxCount, new { htmlAttributes = new { @class = "form-control" } })
+                        <div class="col-md-auto">
+                            @Html.EditorFor(model => model.maxCount, new {htmlAttributes = new { @class = "form-control", required = "required", placeholder = "Please enter number of participants" } })
                         </div>
+                        <p id="demo"></p>
                     </div>
+
+                    <script>
+                        function myFunction() {
+                            var x, text;
+
+                            // Get the value of the input field with id="numb"
+                            x = document.getElementById("maxCount").value;
+
+                            // If x is Not a Number or less than one or greater than 10
+                            if (isNaN(x) || x < 1 || x > 999) {
+                                text = "Input not valid";
+                            } else {
+                                text = "Input OK";
+                            }
+                            document.getElementById("demo").innerHTML = text;
+                        }
+                    </script>
 
                     <div class="form-group">
                         @Html.LabelFor(model => model.IsPublic,"Public Event", htmlAttributes: new { @class = "control-label col-md-10" })
@@ -113,7 +140,7 @@
                 
                 <div class="form-group">
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Create</button>
+                        <button type="submit" class="btn btn-primary" onclick="myFunction()">Create</button>
                         @Html.ActionLink("Cancel", "My", null, htmlAttributes: new { @class = "btn" })
                     </div>
                 </div>

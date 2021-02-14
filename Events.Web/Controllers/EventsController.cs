@@ -223,8 +223,18 @@ namespace Events.Web.Controllers
                 //get count from model view from the form
                 //save to backendless
                 saveEventObj = Backendless.Data.Of("Event").Save(eventObj);
-                
-                
+
+                /*
+                 * var ourSpeakers = this.db.ParticipantProfile
+                 * .Where(e => e.Speaker.id != null)
+                 * .OrderBy(e => e.name)
+                 * .Select(SpeakerInputForModel.ViewModel);// check!!!!
+                 * var allSpeakers = ourSpeakers.Where(e => e.id != null);
+                 * 
+                 */
+
+                var speakerForEvent = db.ParticipantProfile
+                    .Where(es => es.Speaker.id != null);
                 //do something like this for participants
                 var e = new Event()
                 {
@@ -240,10 +250,20 @@ namespace Events.Web.Controllers
                     {
                         id = saveEventObj["objectId"].ToString(),
                         name = model.EventType
-                    },
-                    
+                    },//we should test this with Profile
                     Id = saveEventObj["objectId"].ToString(),
-                    
+                    //wait we just have to add the ID of the speaker to the Event's SpeakerId
+                    /*
+                    speakerProfile = new Data.Profile()
+                    {SELECT 
+    [Extent1].[id] AS [id]
+    FROM [dbo].[Profiles] AS [Extent1]
+    WHERE ([Extent1].[Speaker_id] IS NOT NULL) AND (([Extent1].[name] = @p__linq__0) OR (([Extent1].[name] IS NULL) AND (@p__linq__0 IS NULL)))
+                        id = speakerForEvent.Where(s => s.name == model.SpeakerName).Select(s=>s.id).ToString(),
+                    }
+                    */
+                    //wait i think i can approach it different, by using the query to query a speaker of that id??
+
                     //add speaker in here                       
                 };
                 //save to backendless

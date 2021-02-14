@@ -1,7 +1,9 @@
 ﻿@model Events.Web.Models.EventDetailsViewModel
 
+@*you need to add a beautiful view for viewing an event*@
 @if (Model.Description != null)
 {
+
     <div class="description">Event Type: @Model.EventTypeName</div>
     <div class="description">Description: @Model.Description</div>
 }
