@@ -90,7 +90,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="info">
-                        <a href="#" class="d-block">@Html.ActionLink("" + User.Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</a>
+                        <a href="#" class="d-block">@Html.ActionLink("" + User.Identity.Name + "!", "My", "Events", routeValues: null, htmlAttributes: new { title = "Manage" })</a>
                     </div>
                 </div>
                 <!-- Sidebar Menu -->
@@ -249,7 +249,8 @@
                                                 <td>@item.Location</td>
                                                 <td>
                                                     @Html.ActionLink("Edit", "Edit", "Events", new { id = item.Id }, new { @class = "" }) |
-                                                    @Html.ActionLink("Delete", "Delete", "Events", new { id = item.Id }, new { @class = "" })
+                                                    @Html.ActionLink("Delete", "Delete", "Events", new { id = item.Id }, new { @class = "" }) |
+                                                    @Html.ActionLink("Details", "EventDetailsById", "Home", new { id = item.Id }, new { @class = "" })
                                                 </td>
                                             </tr>
                                         }

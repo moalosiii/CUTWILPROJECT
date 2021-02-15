@@ -14,6 +14,8 @@ namespace Events.Web.Models
 
         public string Description { get; set; }
 
+        public string Title { get; set; }//name of the event
+
         public string AuthorId { get; set; }
 
         public DateTime StartDateTime { get; set; }//if i were to return it as DateTime2, will that be a problem though??
@@ -39,7 +41,8 @@ namespace Events.Web.Models
                     AuthorId = e.Author.Id,
                     EventTypeName = e.EventType.name,
                     StartDateTime = e.StartDateTime,
-                    EndDateTime = e.endTime
+                    EndDateTime = e.endTime,
+                    Title = e.Title
                 };
             }
         }
