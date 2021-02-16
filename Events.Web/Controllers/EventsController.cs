@@ -116,8 +116,23 @@ namespace Events.Web.Controllers
             });
         }
 
+        public ActionResult RSVP()
+        {
+            var backendlessEventPart = Backendless.Data.Of("ParticipantEvent").Find();
+            if (backendlessEventPart != null)
+            {
+                ViewBag.PartEvent = backendlessEventPart;
+            }
+            return View();
+        }
+
         public ActionResult Participants()
         {
+            var backendlessSpeaker = Backendless.Data.Of("Users").Find().Where(e => e["City"] != null);
+            if (backendlessSpeaker != null)
+            {
+                ViewBag.data = backendlessSpeaker;
+            }
             //collect all the participants we have in Backendless
             //then afterwards, save them in them in our SQL
             //and then we gonna have to retreave them and display
@@ -137,6 +152,8 @@ namespace Events.Web.Controllers
 
             foreach (var allPartis in Participants)
             {
+                //in fact let's work from here!!!! with backendless of cause!!... remember we wanted to use ViewBack!!! lol
+                
 
                 var p = new Profile()
                 {
@@ -160,6 +177,8 @@ namespace Events.Web.Controllers
 
             }
             //then afterwards save all of them. either inside this foreach or after this foreach is complete
+
+            //do the blocking of the backendless and see if we can actually get the list and have them displaying also!!!
 
 
             Participants.Any();
@@ -437,14 +456,13 @@ namespace Events.Web.Controllers
             if (model != null && this.ModelState.IsValid)
             {
                 //for backendless
-                speakerObj["name"] = model.Name;
-                speakerObj["surname"] = model.Surname;
-                speakerObj["Phone"] = model.Phonenumber;
-                speakerObj["email"] = model.email;
-                speakerObj["password"] = "speakerPassword";
+                speakerObj["SpeakerName"] = model.Name;
+                speakerObj["Topic"] = model.SpeakerTopic;
+                speakerObj["EventId"] = model.eventToSpeak;// this sends an event ID
+
 
                 //save to backendless
-                saveSpeakerObj = Backendless.Data.Of("Users").Save(speakerObj);
+                saveSpeakerObj = Backendless.Data.Of("EventSpeaker").Save(speakerObj);
 
                 //do something like this for participants
 

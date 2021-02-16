@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "RSVP";
+}
+<link href="~/frontEnd/plugins/datatables-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">RSVP</h3>
+    </div>
+    <div class="card-body">
+        <table id="example1" class="table table-head-fixed text-nowrap">
+            <thead>
+                <tr>
+                    <th>Event name</th>
+                    <th>Event Type</th>
+                    <th>EventStart Time</th>
+                    <th>Participant Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.PartEvent)
+                {
+                    //assign values
+                    string name = item["eventName"],
+                        EventType = item["EventType"],
+                        EventStartTime = item["EventStartTime"],
+                        ParticipantName = item["ParticipantName"],
+                        participantId = item["objectId"];
+                    <tr>
+                        <td>@Html.DisplayFor(modelp => name)</td>
+                        <td>@Html.DisplayFor(modelp => EventType)</td>
+                        <td>@Html.DisplayFor(modelp => EventStartTime)</td>
+                        <td>@Html.DisplayFor(modelp => ParticipantName)</td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>
+<script src="~/frontEnd/plugins/datatables/jquery.dataTables.js"></script>
+<script src="~/frontEnd/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<script>
+    $(function () {
+        $("#example1").DataTable();
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+        });
+    });
+</script>

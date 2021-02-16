@@ -164,6 +164,14 @@
                                     </a>
                                 </li>
                             </ul>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/Events/RSVP" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>RSVP</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
 
                     </ul>
@@ -224,40 +232,81 @@
                         <div class="card-header">
                             <h3 class="card-title">Registered Participants</h3>
                         </div>
-                        <!-- /.card-header -->
-                        <div class="card-body">
+                        <div>
                             <!-- /.card-header -->
+                            @*<div class="card-body">
+                <!-- /.card-header -->
+                <table id="example1" class="table table-head-fixed text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <!--use foreach to populate data-->
+                    <tbody>
+                        @if (Model.participants.Any())
+                        {
+                            foreach (var partInfo in Model.participants)
+                            {
+
+                                        <!--populated data through the list-->
+                                <tr>
+                                    <td>@Html.DisplayFor(modelp => partInfo.name)</td>
+                                    <td>@Html.DisplayFor(modelp => partInfo.emailid)</td>
+                                    <td><span class="tag tag-success">Registered</span></td>
+                                </tr>
+
+                            }
+                        }
+                        else
+                        {
+                            //No Participants
+                        }
+                    </tbody>
+                </table>
+            </div>*@
+                        </div>
+                        <div class="card-body">
                             <table id="example1" class="table table-head-fixed text-nowrap">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>email</th>
-                                        <th>Action</th>
+                                    <th>Name</th>
+                                    <th>Surname</th>
+                                    <th>Email Address</th>
+                                    <th>Phone Number</th>
+                                    <th>Event Start Time</th>
                                     </tr>
                                 </thead>
-                                <!--use foreach to populate data-->
                                 <tbody>
                                     @if (Model.participants.Any())
                                     {
-                                        foreach (var partInfo in Model.participants)
+                                        foreach (var item in ViewBag.Data)
                                         {
-
-                                                    <!--populated data through the list-->
+                                            //assign values
+                                            string name = item["name"],
+                                                surname = item["surname"],
+                                                email = item["email"],
+                                                phone = item["Phone"],
+                                                EventStartTime = item["EventStartTime"],
+                                                participantId = item["objectId"];
                                             <tr>
-                                                <td>@Html.DisplayFor(modelp => partInfo.name)</td>
-                                                <td>@Html.DisplayFor(modelp => partInfo.emailid)</td>
-                                                <td><span class="tag tag-success">Registered</span></td>
+                                                <td>@Html.DisplayFor(modelp => name)</td>
+                                                <td>@Html.DisplayFor(modelp => surname)</td>
+                                                <td>@Html.DisplayFor(modelp => email)</td>
+                                                <td>@Html.DisplayFor(modelp => phone)</td>
+                                                <td>@Html.DisplayFor(modelp => EventStartTime)</td>
                                             </tr>
-
                                         }
+
                                     }
                                     else
                                     {
-                                        //No Participants
+                                        <tr>no participants from backendless bross</tr>
                                     }
                                 </tbody>
                             </table>
-                            
                         </div>
                     </div>
                     <script src="~/frontEnd/plugins/datatables/jquery.dataTables.js"></script>
@@ -273,68 +322,6 @@
                                 "ordering": true,
                                 "info": true,
                                 "autoWidth": false,
-                            });
-                        });
-                    </script>
-                    <table id="exampleBackendless" class="table table-head-fixed text-nowrap">
-                        <thead>
-                            <tr>
-                                <th>lastLogin</th>
-                                <th>userStatus</th>
-                                <th>created</th>
-                                <th>PostalCode</th>
-                                <th>City</th>
-                                <th>ownerId</th>
-                                <th>socialAccount</th>
-                                <th>ProvinceName</th>
-                                <th>surname</th>
-                                <th>Phone</th>
-                                <th>name</th>
-                                <th>___class</th>
-                                <th>Street</th>
-                                <th>blUserLocale</th>
-                                <th>UserType</th>
-                                <th>updated</th>
-                                <th>objectId</th>
-                                <th>email</th>
-
-                            </tr>
-                        </thead>
-                        <!--use foreach to populate data-->
-                        <tbody>
-                            <!--populated data through the list-->
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td><span class="tag tag-success"></span></td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <script>
-                        $(document).ready(function () {
-                            $('#exampleBackendless').DataTable({
-                                "processing": true,
-                                "serverSide": true,
-                                "ajax": {
-                                    "url": "https://api.backendless.com/1611A55F-8DD5-1D10-FFC8-74FC92FBF500/51001261-CF42-4767-B052-FE97646091A9/data/Users",
-                                    "dataType": "json"
-                                },
                             });
                         });
                     </script>
