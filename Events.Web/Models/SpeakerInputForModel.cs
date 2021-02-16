@@ -24,6 +24,10 @@ namespace Events.Web.Models
 
         [Display(Name = "Phone number  *")]
         public string Phonenumber { get; set; }
+
+        public string SpeakerTopic { get; set; }
+
+        public string eventToSpeak { get; set; }
         
         public string id { get; set; }
 
@@ -35,6 +39,8 @@ namespace Events.Web.Models
                 Surname = s.surname,
                 email = s.Emailid,
                 Phonenumber = s.PhoneNumberid,
+                SpeakerTopic = s.SpeakerTopic,
+                eventToSpeak = s.eventToSpeak
                 //get event type with eventtypeid instead of eventtype
                 
 

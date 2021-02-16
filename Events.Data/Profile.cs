@@ -21,6 +21,8 @@ namespace Events.Data
         public string Emailid { get; set; }
         public string PhoneNumberid { get; set; }
         public string Addressid { get; set; }
+        public string SpeakerTopic { get; set; }//new column
+        public string eventToSpeak { get; set; }//new column
         //public string profileEmail { get; set; }//just added this field also on SQL
     
         public virtual Address Address { get; set; }

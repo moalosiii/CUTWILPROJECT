@@ -222,7 +222,7 @@
                     <h2>Participants</h2>
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Sports Events</h3>
+                            <h3 class="card-title">Registered Participants</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -257,6 +257,7 @@
                                     }
                                 </tbody>
                             </table>
+                            
                         </div>
                     </div>
                     <script src="~/frontEnd/plugins/datatables/jquery.dataTables.js"></script>
@@ -275,9 +276,71 @@
                             });
                         });
                     </script>
+                    <table id="exampleBackendless" class="table table-head-fixed text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>lastLogin</th>
+                                <th>userStatus</th>
+                                <th>created</th>
+                                <th>PostalCode</th>
+                                <th>City</th>
+                                <th>ownerId</th>
+                                <th>socialAccount</th>
+                                <th>ProvinceName</th>
+                                <th>surname</th>
+                                <th>Phone</th>
+                                <th>name</th>
+                                <th>___class</th>
+                                <th>Street</th>
+                                <th>blUserLocale</th>
+                                <th>UserType</th>
+                                <th>updated</th>
+                                <th>objectId</th>
+                                <th>email</th>
+
+                            </tr>
+                        </thead>
+                        <!--use foreach to populate data-->
+                        <tbody>
+                            <!--populated data through the list-->
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td><span class="tag tag-success"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <script>
+                        $(document).ready(function () {
+                            $('#exampleBackendless').DataTable({
+                                "processing": true,
+                                "serverSide": true,
+                                "ajax": {
+                                    "url": "https://api.backendless.com/1611A55F-8DD5-1D10-FFC8-74FC92FBF500/51001261-CF42-4767-B052-FE97646091A9/data/Users",
+                                    "dataType": "json"
+                                },
+                            });
+                        });
+                    </script>
                     <!-- /.card-body -->
                 </div>
-
+                <!-- add a testing table here bros-->
             </section>
             <!-- /.content -->
         </div>
@@ -304,6 +367,8 @@
     <script>
   $.widget.bridge('uibutton', $.ui.button)
     </script>
+
+    <script src="//api.backendless.com/sdk/js/latest/backendless.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="~/frontEnd/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- ChartJS -->

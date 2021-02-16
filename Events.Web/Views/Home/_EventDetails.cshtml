@@ -256,13 +256,6 @@
                                     <hr>
                                     <h4>Event Start Date: <br/> <b> @Model.StartDateTime </b></h4>
                                     <h4>Event End Date: <br /><b>@Model.EndDateTime</b></h4>
-
-                                    @if (ViewBag.CanEdit)
-                                    {
-                                        @Html.ActionLink("Edit", "Edit", "Events", new { id = Model.Id }, new { @class = "btn btn-default" })
-                                        <span></span>
-                                        @Html.ActionLink("Delete", "Delete", "Events", new { id = Model.Id }, new { @class = "btn btn-default" })
-                                    }
                                 </div>
                             </div>
                             <div class="row mt-4">

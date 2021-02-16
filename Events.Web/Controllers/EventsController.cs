@@ -412,6 +412,15 @@ namespace Events.Web.Controllers
         public ActionResult CreateSpeaker()
         {
             //he had something in here for his recordCard, i don't
+            using (ApplicationDbContext eventEntity = new ApplicationDbContext())
+            {
+                //create a list of all the events
+                var items = new SelectList(eventEntity.Events.ToList(), "id", "Title");
+                if (items !=null)
+                {
+                    ViewBag.data = items;
+                }
+            }
             return View();
         }
 
@@ -445,6 +454,8 @@ namespace Events.Web.Controllers
                     surname = model.Surname,
                     PhoneNumberid = model.Phonenumber,
                     Emailid = model.email,
+                    SpeakerTopic = model.SpeakerTopic,//new entry test 
+                    eventToSpeak = model.eventToSpeak,
                     Speaker = new Speaker()
                     {
                         id = saveSpeakerObj["objectId"].ToString(),

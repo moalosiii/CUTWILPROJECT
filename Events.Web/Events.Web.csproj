@@ -1811,6 +1811,7 @@
     <Content Include="frontEnd\plugins\toastr\toastr.css" />
     <Content Include="frontEnd\plugins\toastr\toastr.min.css" />
     <Content Include="frontEnd\plugins\toastr\toastr.min.js" />
+    <Content Include="Scripts\backendlessScripts\loadParticipants.js" />
     <Content Include="Scripts\es6-shim.min.js" />
     <Content Include="Scripts\formValidation.js" />
     <Content Include="Scripts\FormValidation.min.js" />

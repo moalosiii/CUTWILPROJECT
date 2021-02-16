@@ -61,7 +61,7 @@
                                 var incrementDay = moment(new Date(e.date));
                                 incrementDay.add(1, 'days');
                                 $('#endDateTime').data('DateTimePicker').minDate(incrementDay);
-                                $(this).data("DateTimePicker").hide();
+                                $(this).data("DateTimePicker").hide(); 
                             });
 
                             $('#endDateTime').datetimepicker().on('dp.change', function (e) {
