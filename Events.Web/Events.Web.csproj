@@ -2081,6 +2081,7 @@
     <Content Include="Views\Events\GraduationsEvents.cshtml" />
     <Content Include="Views\Events\SportsEvents.cshtml" />
     <Content Include="Views\Events\RSVP.cshtml" />
+    <Content Include="Views\Events\DeleteSpeaker.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

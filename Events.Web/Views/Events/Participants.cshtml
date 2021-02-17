@@ -276,7 +276,6 @@
                                     <th>Surname</th>
                                     <th>Email Address</th>
                                     <th>Phone Number</th>
-                                    <th>Event Start Time</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -289,14 +288,12 @@
                                                 surname = item["surname"],
                                                 email = item["email"],
                                                 phone = item["Phone"],
-                                                EventStartTime = item["EventStartTime"],
                                                 participantId = item["objectId"];
                                             <tr>
                                                 <td>@Html.DisplayFor(modelp => name)</td>
                                                 <td>@Html.DisplayFor(modelp => surname)</td>
                                                 <td>@Html.DisplayFor(modelp => email)</td>
                                                 <td>@Html.DisplayFor(modelp => phone)</td>
-                                                <td>@Html.DisplayFor(modelp => EventStartTime)</td>
                                             </tr>
                                         }
 

@@ -427,6 +427,44 @@ namespace Events.Web.Controllers
 
         //this is basically event creation and now we are about to create a sponsor.
         //let's get it!!!
+        [HttpGet]
+        public ActionResult DeleteSpeaker(string id)
+        {
+
+            var speakerToDelete = this.LoadSpeaker(id);
+            if (speakerToDelete == null)
+            {
+                this.AddNotification("Cannot delete event #" + id, NotificationType.ERROR);
+                return this.RedirectToAction("My");
+            }
+
+            var model = SpeakerInputForModel.CreateFromEvent(speakerToDelete);
+            return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteSpeaker(string id, SpeakerInputForModel model)
+        {
+            //load id to objectId for backendless
+
+            var speakerToDelete = this.LoadSpeaker(id);
+            if (speakerToDelete == null)
+            {
+                this.AddNotification("Cannot delete event #" + id, NotificationType.ERROR);
+                return this.RedirectToAction("My");
+            }
+            //delete from backendless using ID ERROR
+            //Long result = Backendless.Data.Of("TABLE-NAME").Remove("WHERE ");
+            //let's find an object first before we delete it.
+            string WhereClause = "objectId = '" + id + "'";
+            Backendless.Data.Of("Event").Remove(WhereClause);
+
+            this.db.ParticipantProfile.Remove(speakerToDelete);
+            this.db.SaveChanges();
+            this.AddNotification("Event deleted.", NotificationType.INFO);
+            return this.RedirectToAction("ListSpeakers");
+        }
 
         public ActionResult CreateSpeaker()
         {
@@ -552,7 +590,7 @@ namespace Events.Web.Controllers
                 BackendlessUser updateSpeaker = new BackendlessUser();
                 //for backendless
                 string WhereClause = id;
-                Dictionary<string, object> savedSpeaker = Backendless.Data.Of("Users").FindById(WhereClause);
+                Dictionary<string, object> savedSpeaker = Backendless.Data.Of("EventSpeaker").FindById(WhereClause);
 
                 updateSpeaker.SetProperty("name", model.Name);
                 updateSpeaker.SetProperty("surname", model.Surname);
@@ -575,7 +613,7 @@ namespace Events.Web.Controllers
                  // user object retrieval is out of scope of this example
                 Backendless.UserService.Update(updateSpeaker, updateCallback);
 
-                Backendless.Persistence.Of("Users").Save(savedSpeaker);//update speaker...
+                Backendless.Persistence.Of("EventSpeaker").Save(savedSpeaker);//update speaker...
                 this.db.SaveChanges();
                 this.AddNotification("Event edited.", NotificationType.INFO);
                 return this.RedirectToAction("My");
